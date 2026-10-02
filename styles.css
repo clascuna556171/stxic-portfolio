@@ -846,11 +846,10 @@ body {
 }
 
 .return-btn {
-    background: rgba(25, 24, 23, 0.02);
-    border: 1px solid var(--rule-heavy);
-    border-radius: 2px;
+    background: none;
+    border: none;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -859,23 +858,22 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.22rem 0.5rem;
+    padding: 0 0 0 0.5rem;
     flex-shrink: 0;
     white-space: nowrap;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    transition: opacity 0.15s ease;
 }
 
 .return-btn:hover {
-    background: rgba(25, 24, 23, 0.07);
-    border-color: var(--ink);
+    text-decoration: underline;
 }
 
 .return-btn:active {
-    transform: scale(0.97);
+    opacity: 0.65;
 }
 
 .return-btn .return-arrow {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     line-height: 1;
 }
 
@@ -1121,24 +1119,26 @@ body {
         align-items: center;
         justify-content: center;
         gap: 0.25rem;
-        background: rgba(25, 24, 23, 0.06);
-        border: 1px solid var(--rule-heavy);
-        padding: 0.32rem 0.5rem;
+        background: none;
+        border: none;
+        padding: 0.35rem 0.35rem 0.35rem 0;
         font-family: var(--font-mono);
         font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
+        font-weight: 700;
+        letter-spacing: 0.08em;
         color: var(--ink);
         cursor: pointer;
         flex-shrink: 0;
-        border-radius: 2px;
-        transition: all 0.15s ease;
+        white-space: nowrap;
+        transition: opacity 0.15s ease;
+    }
+
+    .mobile-return-btn:hover {
+        text-decoration: underline;
     }
 
     .mobile-return-btn:active {
-        transform: scale(0.95);
-        background: var(--ink);
-        color: var(--paper);
+        opacity: 0.65;
     }
 
     .tab-btn {
@@ -1602,14 +1602,16 @@ body {
 
     .return-btn {
         width: auto;
-        padding: 0.18rem 0.42rem;
-        font-size: 0.62rem;
+        padding: 0 0 0 0.35rem;
+        font-size: 0.64rem;
         gap: 0.25rem;
+        background: none;
+        border: none;
     }
 
     .return-btn:active {
-        transform: scale(0.97);
-        background: rgba(25, 24, 23, 0.08);
+        opacity: 0.65;
+        background: none;
     }
 }
 
@@ -1652,8 +1654,8 @@ body {
     }
 
     .mobile-return-btn {
-        padding: 0.3rem 0.45rem;
-        font-size: 0.68rem;
+        padding: 0.3rem 0.25rem 0.3rem 0;
+        font-size: 0.66rem;
     }
 
     .telemetry-tag {
@@ -1665,9 +1667,11 @@ body {
     }
 
     .return-btn {
-        padding: 0.15rem 0.35rem;
+        padding: 0 0 0 0.25rem;
         font-size: 0.58rem;
         gap: 0.2rem;
+        background: none;
+        border: none;
     }
 }
 
