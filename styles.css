@@ -931,55 +931,55 @@ body {
         opacity: 0.5;
     }
 
-    /* BACK FACE: Natural Scrollable Dossier */
+    /* BACK FACE: Fixed One-Page Executive Dossier (No Outer Page Scroll) */
     .face.back-face {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior-y: contain;
+        max-height: 100vh;
+        overflow: hidden; /* Pure 1-page non-scroll */
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        padding: 0 1.25rem max(2rem, env(safe-area-inset-bottom, 2rem)) 1.25rem;
+        justify-content: space-between;
+        padding: 0.85rem 1rem max(0.45rem, env(safe-area-inset-bottom, 0.45rem)) 1rem;
         transform: rotateY(180deg) translateZ(1px);
         -webkit-transform: rotateY(180deg) translateZ(1px);
+        box-sizing: border-box;
     }
 
-    /* Slim Sticky Header: Profile scrolls naturally, ONLY nav tabs stick */
+    /* Fixed Compact Top Header */
     .dossier-header {
-        position: static;
-        background: transparent;
-        padding: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 0 0 0.4rem 0;
         margin: 0;
-        border: none;
+        border-bottom: 1px solid var(--rule);
+        background: transparent;
         box-shadow: none;
-        display: block;
         width: 100%;
     }
 
     .specimen-profile {
-        position: static;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 1.25rem 0 0.85rem 0;
+        gap: 0.55rem;
         margin: 0;
+        padding: 0;
         width: 100%;
     }
 
     .specimen-frame {
-        width: 38px;
-        height: 38px;
+        width: 30px;
+        height: 30px;
         border: 1px solid var(--rule-heavy);
         flex-shrink: 0;
     }
 
     .specimen-monogram {
-        font-size: 0.75rem;
+        font-size: 0.66rem;
         font-weight: 700;
     }
 
@@ -988,40 +988,39 @@ body {
     }
 
     .specimen-details h2 {
-        font-size: 1.15rem;
-        letter-spacing: 0.06em;
-        line-height: 1.2;
+        font-size: 1.05rem;
+        letter-spacing: 0.05em;
+        line-height: 1.15;
     }
 
     .specimen-details p {
-        font-size: 0.74rem;
+        font-size: 0.68rem;
         color: var(--ink-muted);
-        line-height: 1.3;
+        line-height: 1.2;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: calc(100vw - 85px);
+        max-width: calc(100vw - 75px);
     }
 
-    /* Sticky Navigation Bar: Fixed segmented control, NO sideways scroll */
+    /* Fixed Segmented Navigation Bar: Zero Sideways Scroll */
     .dossier-nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(248, 246, 240, 0.96);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        margin: 0 -1.25rem 1rem -1.25rem;
-        padding: 0.5rem 0.75rem;
-        border-bottom: 1px solid var(--rule);
-        box-shadow: 0 4px 16px rgba(25, 24, 23, 0.05);
+        position: static;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 0.25rem;
-        width: calc(100% + 2.5rem);
-        overflow: hidden; /* Zero sideways scrolling */
-        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        overflow: hidden;
+    }
+
+    .dossier-nav::-webkit-scrollbar {
+        display: none;
     }
 
     .tab-text-full {
@@ -1039,7 +1038,7 @@ body {
         gap: 0.25rem;
         background: rgba(25, 24, 23, 0.06);
         border: 1px solid var(--rule-heavy);
-        padding: 0.35rem 0.55rem;
+        padding: 0.32rem 0.5rem;
         font-family: var(--font-mono);
         font-size: 0.72rem;
         font-weight: 600;
@@ -1061,9 +1060,9 @@ body {
         flex: 1 1 0;
         min-width: 0;
         text-align: center;
-        font-size: 0.76rem;
-        letter-spacing: 0.04em;
-        padding: 0.35rem 0.1rem;
+        font-size: 0.74rem;
+        letter-spacing: 0.03em;
+        padding: 0.35rem 0.06rem;
         white-space: nowrap;
         border-bottom: 2px solid transparent;
         color: var(--ink-muted);
@@ -1076,24 +1075,25 @@ body {
         border-bottom-color: var(--ink);
     }
 
-    /* Dossier Viewport & Panes on Mobile */
+    /* Dossier Viewport: Fills remaining height between header and footer */
     .dossier-viewport {
-        position: relative;
-        width: 100%;
-        height: auto;
+        flex: 1 1 0;
         min-height: 0;
-        overflow: visible;
-        flex: 1 0 auto;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin: 0.35rem 0;
     }
 
     .tab-pane {
-        position: relative;
-        inset: auto;
-        height: auto;
+        position: absolute;
+        inset: 0;
         width: 100%;
+        height: 100%;
         display: none;
         opacity: 0;
         transition: opacity 0.2s ease;
+        overflow: hidden;
     }
 
     .tab-pane.active {
@@ -1102,38 +1102,41 @@ body {
         opacity: 1;
     }
 
-    /* TAB 1: PROJECTS (Horizontal Selector + Full Specimen Detail) */
+    /* TAB 1: PROJECTS (Fitted 1-page with inner scrollable detail) */
     .projects-split {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        height: 100%;
+        gap: 0.45rem;
         width: 100%;
-        height: auto;
+        overflow: hidden;
     }
 
     .project-index {
+        flex-shrink: 0;
         display: flex;
         flex-direction: row;
-        gap: 0.5rem;
+        gap: 0.35rem;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        padding: 0.25rem 0.15rem 0.65rem 0.15rem;
+        padding: 0.1rem 0 0.3rem 0;
         border-right: none;
         border-bottom: 1px solid var(--rule);
-        scrollbar-width: thin;
-        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+    }
+
+    .project-index::-webkit-scrollbar {
+        display: none;
     }
 
     .project-card-item {
         scroll-snap-align: start;
         flex-shrink: 0;
-        min-width: 145px;
-        max-width: 200px;
-        padding: 0.55rem 0.75rem;
+        padding: 0.38rem 0.6rem;
         background: var(--paper);
         border: 1px solid var(--rule);
         border-radius: 2px;
-        transition: all 0.2s ease;
+        transition: all 0.15s ease;
         cursor: pointer;
     }
 
@@ -1141,47 +1144,44 @@ body {
     .project-card-item.selected {
         background: var(--paper-dim);
         border-color: var(--ink);
-        box-shadow: 0 2px 6px rgba(25, 24, 23, 0.08), inset 0 0 0 1px var(--ink);
-        transform: translateY(-1px);
+        box-shadow: 0 1px 4px rgba(25, 24, 23, 0.08), inset 0 0 0 1px var(--ink);
     }
 
     .proj-item-title {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
         font-weight: 600;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .proj-item-type {
-        font-size: 0.7rem;
+        font-size: 0.66rem;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-top: 2px;
+        margin-top: 1px;
     }
 
+    /* Active project details: internally scrollable inside the card */
     .project-dossier-view {
+        flex: 1 1 0;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         display: flex;
         flex-direction: column;
-        gap: 1.15rem;
-        padding: 1.15rem;
+        gap: 0.75rem;
+        padding: 0.75rem;
         background: var(--paper);
         border: 1px solid var(--rule);
-        height: auto;
-        overflow: visible;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
     }
 
     .proj-preview-box {
         width: 100%;
-        height: 200px;
+        height: 140px;
         border: 1px solid var(--rule-heavy);
         background: #e8e4db;
         flex-shrink: 0;
     }
 
-    /* Subtle editorial desaturation on mobile images */
     .proj-preview-box img {
         filter: grayscale(35%) contrast(1.05);
         transition: filter 0.3s ease;
@@ -1195,69 +1195,71 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.4rem;
+        gap: 0.25rem;
         border-bottom: 1px solid var(--rule);
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.35rem;
     }
 
     .proj-badge {
-        font-size: 0.64rem;
-        letter-spacing: 0.1em;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
     }
 
     .proj-detail-copy h3 {
-        font-size: 1.3rem;
-        letter-spacing: 0.06em;
+        font-size: 1.15rem;
+        letter-spacing: 0.05em;
     }
 
     .problem-solution-block {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 0.55rem;
+    }
+
+    .spec-label {
+        font-size: 0.65rem;
     }
 
     .spec-text {
-        font-size: 0.9rem;
-        line-height: 1.5;
+        font-size: 0.85rem;
+        line-height: 1.45;
     }
 
     .proj-stack {
-        font-size: 0.72rem;
-        line-height: 1.45;
+        font-size: 0.68rem;
+        line-height: 1.4;
         border-top: 1px solid var(--rule);
-        padding-top: 0.6rem;
+        padding-top: 0.5rem;
     }
 
     .proj-links-row {
         display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
+        flex-direction: row;
+        gap: 0.5rem;
         width: 100%;
-        margin-top: 0.25rem;
+        margin-top: 0.2rem;
     }
 
     .proj-cta-link {
+        flex: 1;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
-        padding: 0.65rem 1rem;
+        padding: 0.5rem 0.6rem;
         background: rgba(25, 24, 23, 0.04);
         border: 1px solid var(--ink);
         text-decoration: none;
-        font-size: 0.78rem;
-        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
         font-family: var(--font-mono);
         font-weight: 600;
         border-radius: 2px;
-        transition: all 0.15s ease;
         text-align: center;
     }
 
     .proj-cta-link:active {
         background: var(--ink);
         color: var(--paper);
-        transform: scale(0.98);
     }
 
     .proj-cta-link.live-link {
@@ -1265,11 +1267,15 @@ body {
         color: var(--paper);
     }
 
-    /* TAB 2: CERTS (Archival Specimen Cards) */
+    /* TAB 2: CERTS (Fitted with inner scrollable ledger) */
     .certs-wrap {
-        height: auto;
-        overflow: visible;
-        gap: 1.25rem;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        padding-right: 0.2rem;
     }
 
     .ledger-table thead {
@@ -1287,31 +1293,29 @@ body {
     .ledger-table tr {
         background: var(--paper-dim);
         border: 1px solid var(--rule-heavy);
-        margin-bottom: 0.85rem;
-        padding: 0.95rem 1rem;
+        margin-bottom: 0.65rem;
+        padding: 0.75rem 0.85rem;
         border-radius: 2px;
-        box-shadow: 0 1px 4px rgba(25, 24, 23, 0.04);
-        position: relative;
+        box-shadow: 0 1px 3px rgba(25, 24, 23, 0.04);
     }
 
     .ledger-table td {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.35rem 0;
+        padding: 0.25rem 0;
         border-bottom: 1px dashed var(--rule);
-        font-size: 0.84rem;
-        gap: 0.75rem;
+        font-size: 0.82rem;
+        gap: 0.5rem;
     }
 
     .ledger-table td:first-child {
         display: block;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-family: var(--font-display);
-        letter-spacing: 0.03em;
         border-bottom: 1px solid var(--rule-heavy);
-        padding-bottom: 0.45rem;
-        margin-bottom: 0.35rem;
+        padding-bottom: 0.35rem;
+        margin-bottom: 0.25rem;
     }
 
     .ledger-table td:first-child strong {
@@ -1321,16 +1325,15 @@ body {
 
     .ledger-table td:last-child {
         border-bottom: none;
-        padding-top: 0.55rem;
-        margin-top: 0.15rem;
+        padding-top: 0.4rem;
         justify-content: flex-end;
     }
 
     .ledger-table td::before {
         content: attr(data-label);
         font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.1em;
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--ink-muted);
         font-weight: 600;
@@ -1344,45 +1347,42 @@ body {
     .verify-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.35rem;
-        padding: 0.32rem 0.85rem;
+        gap: 0.25rem;
+        padding: 0.25rem 0.7rem;
         background: var(--ink);
         color: var(--paper) !important;
         text-decoration: none;
         font-family: var(--font-mono);
-        font-size: 0.74rem;
+        font-size: 0.72rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.06em;
         border-radius: 2px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-        transition: transform 0.15s ease;
-    }
-
-    .verify-link:active {
-        transform: scale(0.95);
     }
 
     .roadmap-ledger-bar {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.35rem;
-        font-size: 0.76rem;
-        line-height: 1.4;
+        gap: 0.25rem;
+        font-size: 0.72rem;
+        line-height: 1.35;
         border-top: 1px solid var(--rule);
-        padding-top: 0.85rem;
+        padding-top: 0.65rem;
     }
 
-    /* TAB 3: EXPERIENCE (Executive Memo Stack) */
+    /* TAB 3: EXPERIENCE (Fitted with inner scrollable memos) */
     .timeline-wrap {
-        height: auto;
-        overflow: visible;
-        padding-right: 0;
-        gap: 1.25rem;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
     }
 
     .memo-block {
-        padding-left: 1.15rem;
+        padding-left: 0.95rem;
         border-left: 2px solid var(--rule-heavy);
     }
 
@@ -1396,95 +1396,111 @@ body {
     .memo-header {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
-        margin-bottom: 0.45rem;
+        gap: 0.15rem;
+        margin-bottom: 0.35rem;
     }
 
     .memo-role {
-        font-size: 1.05rem;
-        line-height: 1.25;
+        font-size: 0.98rem;
+        line-height: 1.2;
     }
 
     .memo-firm {
         display: block;
-        font-size: 0.82rem;
-        margin-top: 0.15rem;
+        font-size: 0.78rem;
+        margin-top: 0.1rem;
     }
 
     .memo-dates {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         color: var(--ink-muted);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.06em;
     }
 
     .memo-body {
-        font-size: 0.88rem;
-        line-height: 1.55;
+        font-size: 0.84rem;
+        line-height: 1.45;
     }
 
     /* TAB 4: DIRECT LINE / CONTACT */
     .contact-memo-wrap {
-        height: auto;
-        justify-content: flex-start;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .contact-box {
-        padding: 1.15rem;
+        padding: 1rem;
         width: 100%;
     }
 
     .contact-head {
-        font-size: 1.15rem;
-        letter-spacing: 0.08em;
+        font-size: 1.05rem;
+        letter-spacing: 0.06em;
     }
 
     .contact-text {
-        font-size: 0.9rem;
-        line-height: 1.55;
-        margin-bottom: 1.15rem;
+        font-size: 0.86rem;
+        line-height: 1.45;
+        margin-bottom: 0.85rem;
     }
 
     .contact-links-grid {
-        gap: 0.85rem;
-        padding-top: 1rem;
+        gap: 0.65rem;
+        padding-top: 0.75rem;
     }
 
     .contact-row {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.25rem;
+        gap: 0.15rem;
     }
 
     .contact-label {
         width: 100%;
-        font-size: 0.68rem;
+        font-size: 0.65rem;
         color: var(--ink-muted);
     }
 
     .contact-val {
-        font-size: 0.88rem;
+        font-size: 0.84rem;
         word-break: break-all;
     }
 
-    /* DOSSIER FOOTER */
+    /* Fixed Bottom Footer */
     .dossier-footer {
-        margin-top: 2rem;
-        padding-top: 1.15rem;
-        flex-direction: column;
-        gap: 0.75rem;
-        text-align: center;
-        font-size: 0.72rem;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--rule);
+        padding-top: 0.35rem;
+        margin-top: 0.2rem;
+        font-size: 0.68rem;
+        width: 100%;
+    }
+
+    .dossier-footer span {
+        font-size: 0.64rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 55%;
     }
 
     .return-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 0.65rem 1rem;
+        width: auto;
+        padding: 0.32rem 0.65rem;
         border: 1px solid var(--rule-heavy);
         background: rgba(25, 24, 23, 0.03);
         border-radius: 2px;
-        font-size: 0.78rem;
+        font-size: 0.72rem;
+        flex-shrink: 0;
     }
 
     .return-btn:active {
@@ -1499,25 +1515,7 @@ body {
     }
 
     .face.back-face {
-        padding: 0 1rem 2rem 1rem;
-    }
-
-    .dossier-nav {
-        margin: 0 -1rem 1rem -1rem;
-        padding: 0.45rem 0.5rem;
-        width: calc(100% + 2rem);
-        gap: 0.2rem;
-    }
-
-    .mobile-return-btn {
-        padding: 0.32rem 0.45rem;
-        font-size: 0.7rem;
-    }
-
-    .tab-btn {
-        font-size: 0.71rem;
-        letter-spacing: 0.02em;
-        padding: 0.35rem 0.05rem;
+        padding: 0.7rem 0.75rem max(0.4rem, env(safe-area-inset-bottom, 0.4rem)) 0.75rem;
     }
 
     .hero-name {
@@ -1541,7 +1539,17 @@ body {
     }
 
     .proj-preview-box {
-        height: 170px;
+        height: 125px;
+    }
+
+    .tab-btn {
+        font-size: 0.7rem;
+        letter-spacing: 0.02em;
+    }
+
+    .mobile-return-btn {
+        padding: 0.3rem 0.45rem;
+        font-size: 0.68rem;
     }
 }
 
