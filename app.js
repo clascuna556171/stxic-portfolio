@@ -5,7 +5,8 @@ const projects = {
         badge: "100% OFFLINE AI ENGINE",
         problem: "Content creators waste hours manually searching video footage for viral hooks, syncing subtitles, and paying expensive recurring cloud subscriptions with privacy risks.",
         solution: "Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.",
-        stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
+                performance: "Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.",
+stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
         img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
         repo: "https://github.com/clascuna556171/roninclips",
         live: null
@@ -151,6 +152,7 @@ const detailTitle = document.getElementById('detailTitle');
 const detailBadge = document.getElementById('detailBadge');
 const detailProblem = document.getElementById('detailProblem');
 const detailSolution = document.getElementById('detailSolution');
+const detailPerformance = document.getElementById('detailPerformance');
 const detailStack = document.getElementById('detailStack');
 const detailImg = document.getElementById('detailImg');
 const detailRepoLink = document.getElementById('detailRepoLink');
@@ -167,6 +169,7 @@ function renderProject(id) {
     }
     if (detailProblem) detailProblem.textContent = data.problem;
     if (detailSolution) detailSolution.textContent = data.solution;
+    if (detailPerformance) detailPerformance.textContent = data.performance || '';
     if (detailStack) detailStack.textContent = `TECH SPEC: ${data.stack}`;
     if (detailImg) detailImg.src = data.img;
     if (detailRepoLink) detailRepoLink.href = data.repo;

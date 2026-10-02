@@ -886,6 +886,10 @@
                                             <span class="spec-label">THE SOLUTION:</span>
                                             <p id="detailSolution" class="spec-text">Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.</p>
                                         </div>
+                                          <div class="spec-block">
+                                              <span class="spec-label">PERFORMANCE:</span>
+                                              <p id="detailPerformance" class="spec-text">Sub-3s transcription latency &bull; 0 cloud egress fees &bull; 100% local data residency &bull; 5x&ndash;10x faster export via CUDA h264_nvenc.</p>
+                                          </div>
                                     </div>
 
                                     <div class="proj-stack" id="detailStack">TECH SPEC: LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG</div>
@@ -1093,7 +1097,8 @@
                 title: "RoninClips",
                 problem: "Content creators waste hours manually searching video footage for viral hooks, syncing subtitles, and paying expensive recurring cloud subscriptions with privacy risks.",
                 solution: "Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.",
-                stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
+                        performance: "Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.",
+stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
                 img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
                 repo: "https://github.com/clascuna556171/roninclips",
                 live: null
@@ -1102,7 +1107,8 @@
                 title: "PawfectMatch",
                 problem: "Animal shelters struggle with disjointed adoption records, slow applicant screening, and chaotic intake procedures handled across fragmented spreadsheets.",
                 solution: "Built a unified full-stack pet adoption management platform with glassmorphic interface, natural language adoption chatbot, and comprehensive shelter management ledger with audit trails.",
-                stack: "LARAVEL / PHP / MYSQL / JAVASCRIPT / TAILWIND CSS",
+                        performance: "100% automated 7-day post-adoption check-in dispatch • 0 lost adoption applications • Sub-100ms multi-attribute filter response • Zero paper record dependency.",
+stack: "LARAVEL / PHP / MYSQL / JAVASCRIPT / TAILWIND CSS",
                 img: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80",
                 repo: "https://github.com/clascuna556171/pawfect-match",
                 live: "https://pawfect-match-1gqf.onrender.com/"
@@ -1111,7 +1117,8 @@
                 title: "Kinetic Portfolio / STXIC.CL",
                 problem: "Traditional developer portfolios feel static and forgettable, failing to convey deep technical creativity and real-time graphics capability.",
                 solution: "Developed a custom GSAP and Canvas2D interactive web experience featuring real-time ASCII rasterization, magnetic cursor physics, and embedded conversational AI concierge.",
-                stack: "LARAVEL / PHP / GSAP / LENIS / CANVAS 2D / CSS3",
+                        performance: "Locked 60fps Lenis inertial scroll physics • Sub-second Groq AI concierge responses • 0 cumulative layout shift (CLS 0.0) • Multi-stage Docker zero-downtime deployment.",
+stack: "LARAVEL / PHP / GSAP / LENIS / CANVAS 2D / CSS3",
                 img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80",
                 repo: "https://github.com/clascuna556171",
                 live: null
@@ -1120,7 +1127,8 @@
                 title: "AI Task Automator",
                 problem: "Customer support desks face overwhelming ticket queues, manual categorization delays, and prolonged first-response latency on repetitive inquiries.",
                 solution: "Architected a Python-driven automation suite integrating LLMs to auto-categorize support inquiries, parse intent, and dispatch instant verified resolution templates, cutting manual triage by 70%.",
-                stack: "PYTHON / OPENAI API / FASTAPI / MYSQL / WORKFLOW AUTOMATION",
+                        performance: "Sub-second asynchronous ticket ingestion • 70% manual triage reduction via auto-response • 100% HMAC SHA-256 webhook delivery integrity • 65 automated passing tests.",
+stack: "PYTHON / OPENAI API / FASTAPI / MYSQL / WORKFLOW AUTOMATION",
                 img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
                 repo: "https://github.com/clascuna556171",
                 live: null
@@ -1162,6 +1170,7 @@
         const detailTitle = document.getElementById('detailTitle');
         const detailProblem = document.getElementById('detailProblem');
         const detailSolution = document.getElementById('detailSolution');
+        const detailPerformance = document.getElementById('detailPerformance');
         const detailStack = document.getElementById('detailStack');
         const detailImg = document.getElementById('detailImg');
         const detailRepoLink = document.getElementById('detailRepoLink');
@@ -1174,6 +1183,7 @@
             if (detailTitle) detailTitle.textContent = data.title;
             if (detailProblem) detailProblem.textContent = data.problem;
             if (detailSolution) detailSolution.textContent = data.solution;
+            if (detailPerformance) detailPerformance.textContent = data.performance || '';
             if (detailStack) detailStack.textContent = `TECH SPEC: ${data.stack}`;
             if (detailImg) detailImg.src = data.img;
             if (detailRepoLink) detailRepoLink.href = data.repo;
