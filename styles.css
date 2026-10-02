@@ -99,11 +99,11 @@ body {
     font-size: clamp(6.5rem, 18vw, 11.5rem);
     font-weight: 700;
     letter-spacing: 0.22em;
-    color: rgba(25, 24, 23, 0.024);
+    color: rgba(25, 24, 23, 0.052);
     pointer-events: none;
     user-select: none;
     z-index: 0;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.65), -1px -1px 0 rgba(0, 0, 0, 0.03);
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.75), -1px -1px 0 rgba(0, 0, 0, 0.05);
     line-height: 1;
 }
 
@@ -186,44 +186,37 @@ body {
     margin-top: 1.6rem;
 }
 
-/* Direction 1: Whispering Microprint Turn Cue */
+/* Minimalist Icon-Only Turn Cue */
 .card-turn-prompt {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
+    justify-content: center;
     background: transparent;
     border: none;
-    padding: 0.25rem 0;
+    padding: 0.35rem;
     cursor: pointer;
-    transition: color 0.25s ease, opacity 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .card-turn-prompt .prompt-glyph {
-    font-size: 0.88rem;
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+    font-size: 1.25rem;
+    color: var(--ink-faint);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease, opacity 0.25s ease;
     display: inline-block;
-    opacity: 0.65;
-}
-
-.front-face:hover .card-turn-prompt,
-.card-turn-prompt:hover {
-    color: var(--ink);
+    line-height: 1;
+    opacity: 0.6;
 }
 
 .front-face:hover .card-turn-prompt .prompt-glyph,
 .card-turn-prompt:hover .prompt-glyph {
+    color: var(--ink);
     transform: rotate(180deg);
     opacity: 1;
 }
 
 .front-face:active .card-turn-prompt,
 .card-turn-prompt:active {
-    opacity: 0.65;
+    transform: scale(0.92);
 }
 
 .bottom-meta-row {
@@ -1017,9 +1010,11 @@ body {
     }
 
     .card-turn-prompt {
-        padding: 0.2rem 0;
-        font-size: 0.65rem;
-        letter-spacing: 0.18em;
+        padding: 0.25rem;
+    }
+
+    .card-turn-prompt .prompt-glyph {
+        font-size: 1.15rem;
     }
 
     .bottom-meta-row {
@@ -1684,9 +1679,8 @@ body {
         font-size: clamp(3.8rem, 18vw, 5.5rem);
     }
 
-    .card-turn-prompt {
-        font-size: 0.62rem;
-        letter-spacing: 0.16em;
+    .card-turn-prompt .prompt-glyph {
+        font-size: 1.05rem;
     }
 
     .proj-preview-box {
