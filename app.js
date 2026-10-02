@@ -85,20 +85,24 @@ const projects = {
 // DOM References
 const deck = document.getElementById('deck');
 const flipTrigger = document.getElementById('flipTrigger');
-const returnTrigger = document.getElementById('returnTrigger');
+const returnTriggers = document.querySelectorAll('#returnTrigger, #mobileReturnTrigger, .return-btn');
+const backFace = document.querySelector('.back-face');
 
-// Flip Controls (Clean 2D Sheet Flip)
+// Flip Controls (Clean 3D Card Flip)
 if (flipTrigger && deck) {
     flipTrigger.addEventListener('click', () => {
         deck.classList.add('flipped');
+        if (backFace) {
+            backFace.scrollTop = 0;
+        }
     });
 }
 
-if (returnTrigger && deck) {
-    returnTrigger.addEventListener('click', () => {
-        deck.classList.remove('flipped');
+returnTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        if (deck) deck.classList.remove('flipped');
     });
-}
+});
 
 // Dossier Tabs Navigation
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -114,6 +118,12 @@ tabBtns.forEach(btn => {
         const targetPane = document.getElementById(`pane-${target}`);
         if (targetPane) {
             targetPane.classList.add('active');
+        }
+
+        // On mobile, smoothly reset scroll position to top of dossier
+        if (backFace && window.innerWidth <= 768) {
+            const headerHeight = document.querySelector('.dossier-header')?.offsetHeight || 80;
+            backFace.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
 });
@@ -159,6 +169,11 @@ projectItems.forEach(item => {
         projectItems.forEach(i => i.classList.remove('selected'));
         item.classList.add('selected');
         renderProject(item.getAttribute('data-id'));
+
+        // Center active project in mobile horizontal selector
+        if (window.innerWidth <= 900) {
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
     });
 });
 
