@@ -39,27 +39,60 @@
       "featured": true
     },
     {
+      "title": "WorthIt",
+      "slug": "worthit",
+      "description": "Intentional friction & behavioral economics mobile engine to counteract compulsive spending and buyer's remorse.",
+      "tech_stack": ["Flutter", "Dart", "Firebase", "Groq LPU", "LLaMA-3.3-70B", "Provider"],
+      "github": "https://github.com/clascuna556171/worthit",
+      "featured": true
+    },
+    {
+      "title": "The Shoe Boy",
+      "slug": "shoeboy",
+      "description": "Centralized serialized inventory management and multi-channel live-selling POS system built for a footwear retailer with 100,000+ followers.",
+      "tech_stack": ["Laravel 11", "PHP 8.2", "MySQL", "Alpine.js", "Tailwind CSS", "Blade", "DomPDF"],
+      "github": "https://github.com/clascuna556171/shoeboy",
+      "featured": true
+    },
+    {
+      "title": "STXIC (Personal Life OS)",
+      "slug": "stxic",
+      "description": "Privacy-first personal life OS with encrypted local vault, Blackboard student automation (BADS-DE), and live Obsidian sync.",
+      "tech_stack": ["Next.js 14", "React 19", "TypeScript", "Tailwind CSS", "Firebase", "Groq", "Ollama", "Capacitor"],
+      "github": "https://github.com/clascuna556171/stxic-os",
+      "featured": true
+    },
+    {
+      "title": "PolySkill",
+      "slug": "polyskill",
+      "description": "Universal static compiler for AI agent skills emitting hardened tools with deterministic runtime guardrails in ~2ms.",
+      "tech_stack": ["TypeScript", "Node.js", "AST Parsing", "MCP", "Antigravity", "Cursorrules", "OpenAPI", "CLI"],
+      "github": "https://github.com/clascuna556171/pollyskill",
+      "featured": true
+    },
+    {
+      "title": "AI Ticket Automator",
+      "slug": "ai-task-automator",
+      "description": "Asynchronous support ticket triage engine with sentiment/priority classification, auto-responses, and HMAC webhook dispatch.",
+      "tech_stack": ["FastAPI", "Python 3.12", "Redis", "RQ", "SQLAlchemy", "MySQL", "Groq LLM", "JWT", "Docker"],
+      "github": "https://github.com/clascuna556171/ai-task-automator",
+      "featured": true
+    },
+    {
       "title": "PawfectMatch - Pet Adoption System",
       "slug": "pawfect-match",
-      "description": "Interactive pet adoption management system with glassmorphism UI, natural language chatbot, and shelter management dashboard.",
-      "tech_stack": ["Laravel", "PHP", "MySQL", "JavaScript", "Tailwind CSS"],
+      "description": "Interactive pet adoption management system with cinematic discovery, role-based shelter management, and 7-day post-adoption welfare check-ins.",
+      "tech_stack": ["Laravel", "PHP", "MySQL", "Blade", "Tailwind CSS", "Alpine.js", "Docker", "Vite"],
       "live_url": "https://pawfect-match-1gqf.onrender.com/",
       "github": "https://github.com/clascuna556171/pawfect-match",
       "featured": true
     },
     {
-      "title": "Kinetic Portfolio / STXIC.CL",
+      "title": "STXIC.CL - Kinetic Portfolio",
       "slug": "kinetic-portfolio",
-      "description": "A fully custom GSAP-powered interactive portfolio featuring Canvas2D ASCII raster, magnetic cursors, and embedded AI concierge.",
-      "tech_stack": ["Laravel", "PHP", "GSAP", "Lenis", "Vanilla JS", "CSS3"],
-      "github": "https://github.com/clascuna556171",
-      "featured": true
-    },
-    {
-      "title": "AI Task Automator",
-      "slug": "ai-task-automator",
-      "description": "Python-driven automation suite integrating GPT to categorize and auto-reply to support tickets, cutting manual triage by 70%.",
-      "tech_stack": ["Python", "OpenAI API", "FastAPI", "MySQL"],
+      "description": "Awwwards-inspired kinetic web portfolio with GSAP 3 scroll physics, magnetic cursor dynamics, /admin CMS, and grounded AI concierge.",
+      "tech_stack": ["Laravel 11", "PHP 8.3", "GSAP 3", "Lenis", "Groq AI", "Tailwind CSS", "Docker", "MySQL"],
+      "github": "https://github.com/clascuna556171/fullstack-portfolio",
       "featured": true
     }
   ],

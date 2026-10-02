@@ -1,6 +1,6 @@
 # Project Context: STXIC Executive Portfolio (The Bateman Dossier)
 
-## IMPORTANT - Auto push everytime there is new code: https://github.com/clascuna556171/stxic-portfolio ##
+## IMPORTANT - Auto push every time there is new code: https://github.com/clascuna556171/stxic-portfolio ##
 ## 1. Executive Summary & Concept
 An executive-level personal developer portfolio for **Christian "STXIC" Lascuña**, styled with the obsessive craftsmanship, tactile luxury, and dark satire of the iconic **American Psycho** business card scene ("Pierce & Pierce, Mergers & Acquisitions").
 
