@@ -865,6 +865,10 @@ body {
     text-decoration: underline;
 }
 
+.return-text-compact {
+    display: none;
+}
+
 /* =========================================
    RESPONSIVE ADJUSTMENTS
    ========================================= */
@@ -1582,6 +1586,14 @@ body {
         font-size: 0.6rem;
     }
 
+    .return-btn .return-text-full {
+        display: none;
+    }
+
+    .return-btn .return-text-compact {
+        display: inline;
+    }
+
     .return-btn {
         width: auto;
         padding: 0.28rem 0.5rem;
@@ -1650,12 +1662,9 @@ body {
         font-size: 0.62rem;
     }
 
-    .return-btn .return-text {
-        display: none;
-    }
-
     .return-btn {
-        padding: 0.28rem 0.42rem;
+        padding: 0.24rem 0.42rem;
+        font-size: 0.64rem;
     }
 }
 
