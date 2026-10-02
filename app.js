@@ -84,13 +84,16 @@ const projects = {
 
 // DOM References
 const deck = document.getElementById('deck');
+const frontFace = document.querySelector('.front-face');
 const flipTrigger = document.getElementById('flipTrigger');
 const returnTriggers = document.querySelectorAll('#returnTrigger, #mobileReturnTrigger, .return-btn');
 const backFace = document.querySelector('.back-face');
 
-// Flip Controls (Clean 3D Card Flip)
-if (flipTrigger && deck) {
-    flipTrigger.addEventListener('click', () => {
+// Flip Controls (Tap Anywhere on Front Card to Flip)
+if (frontFace && deck) {
+    frontFace.addEventListener('click', (e) => {
+        // Prevent flip if clicking external links
+        if (e.target.closest('a')) return;
         deck.classList.add('flipped');
         if (backFace) {
             backFace.scrollTop = 0;
@@ -98,8 +101,22 @@ if (flipTrigger && deck) {
     });
 }
 
+// Keyboard Accessibility for Flip Trigger
+if (flipTrigger) {
+    flipTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (deck) {
+                deck.classList.add('flipped');
+                if (backFace) backFace.scrollTop = 0;
+            }
+        }
+    });
+}
+
 returnTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (deck) deck.classList.remove('flipped');
     });
 });

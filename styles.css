@@ -82,7 +82,9 @@ body {
    FRONT FACE (FULL SCREEN BUSINESS CARD)
    ========================================= */
 .front-face {
-    cursor: default;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .top-meta-row {
@@ -153,22 +155,43 @@ body {
     margin-top: 2.2rem;
 }
 
-.inspect-button {
-    background: none;
-    border: 1px solid var(--ink);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    letter-spacing: 0.2em;
+.card-turn-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.65rem 1.8rem;
+    color: var(--ink-muted);
+    padding: 0.45rem 1.15rem;
+    border: 1px dashed var(--rule-heavy);
+    background: rgba(25, 24, 23, 0.03);
+    border-radius: 2px;
     cursor: pointer;
-    color: var(--ink);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
-.inspect-button:hover {
-    background-color: var(--ink);
-    color: var(--paper);
+.card-turn-prompt .prompt-glyph {
+    font-size: 0.95rem;
+    transition: transform 0.45s ease;
+    display: inline-block;
+}
+
+.front-face:hover .card-turn-prompt,
+.card-turn-prompt:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+    background: rgba(25, 24, 23, 0.07);
+}
+
+.front-face:hover .card-turn-prompt .prompt-glyph {
+    transform: rotate(180deg);
+}
+
+.front-face:active .card-turn-prompt,
+.card-turn-prompt:active {
+    transform: scale(0.97);
 }
 
 .bottom-meta-row {
@@ -802,7 +825,7 @@ body {
 
     /* FRONT FACE: Precision Vertical Business Card */
     .face.front-face {
-        padding: 2rem 1.25rem 1.75rem 1.25rem;
+        padding: 2rem 1.25rem 1.5rem 1.25rem;
         height: 100%;
         overflow: hidden;
         display: flex;
@@ -866,27 +889,10 @@ body {
         margin-top: 1.5rem;
     }
 
-    .inspect-button {
-        padding: 0.8rem 1.75rem;
-        font-size: 0.82rem;
-        letter-spacing: 0.16em;
-        background: var(--paper-dim);
-        border: 1px solid var(--ink);
-        color: var(--ink);
-        font-family: var(--font-mono);
-        text-transform: uppercase;
-        font-weight: 600;
-        cursor: pointer;
-        border-radius: 2px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-        transition: all 0.15s ease;
-    }
-
-    .inspect-button:active {
-        transform: translateY(2px) scale(0.97);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        background: var(--ink);
-        color: var(--paper);
+    .card-turn-prompt {
+        padding: 0.4rem 0.95rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
     }
 
     .bottom-meta-row {
@@ -917,7 +923,7 @@ body {
         opacity: 0.5;
     }
 
-    /* BACK FACE: Natural Scrollable Dossier with Sticky Header */
+    /* BACK FACE: Natural Scrollable Dossier */
     .face.back-face {
         position: absolute;
         inset: 0;
@@ -930,31 +936,31 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        padding: 0 1.25rem 2.5rem 1.25rem;
+        padding: 0 1.25rem max(2rem, env(safe-area-inset-bottom, 2rem)) 1.25rem;
         transform: rotateY(180deg) translateZ(1px);
         -webkit-transform: rotateY(180deg) translateZ(1px);
     }
 
+    /* Slim Sticky Header: Profile scrolls naturally, ONLY nav tabs stick */
     .dossier-header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(248, 246, 240, 0.95);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        margin: 0 -1.25rem 1.25rem -1.25rem;
-        padding: 0.85rem 1.25rem 0.65rem 1.25rem;
-        border-bottom: 1px solid var(--rule);
-        box-shadow: 0 4px 16px rgba(25, 24, 23, 0.05);
-        display: flex;
-        flex-direction: column;
-        gap: 0.65rem;
+        position: static;
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        display: block;
+        width: 100%;
     }
 
     .specimen-profile {
+        position: static;
         display: flex;
         align-items: center;
         gap: 0.75rem;
+        padding: 1.25rem 0 0.85rem 0;
+        margin: 0;
+        width: 100%;
     }
 
     .specimen-frame {
@@ -980,7 +986,7 @@ body {
     }
 
     .specimen-details p {
-        font-size: 0.75rem;
+        font-size: 0.74rem;
         color: var(--ink-muted);
         line-height: 1.3;
         white-space: nowrap;
@@ -991,14 +997,23 @@ body {
 
     /* Sticky Navigation Bar with Return Trigger */
     .dossier-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(248, 246, 240, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        margin: 0 -1.25rem 1rem -1.25rem;
+        padding: 0.65rem 1.25rem;
+        border-bottom: 1px solid var(--rule);
+        box-shadow: 0 4px 16px rgba(25, 24, 23, 0.05);
         display: flex;
         align-items: center;
         gap: 0.35rem;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding-bottom: 2px;
-        width: 100%;
+        width: calc(100% + 2.5rem);
         align-self: flex-start;
     }
 
@@ -1141,6 +1156,16 @@ body {
         border: 1px solid var(--rule-heavy);
         background: #e8e4db;
         flex-shrink: 0;
+    }
+
+    /* Subtle editorial desaturation on mobile images */
+    .proj-preview-box img {
+        filter: grayscale(35%) contrast(1.05);
+        transition: filter 0.3s ease;
+    }
+
+    .proj-preview-box img:active {
+        filter: grayscale(0%) contrast(1);
     }
 
     .proj-header-row {
@@ -1454,9 +1479,10 @@ body {
         padding: 0 1rem 2rem 1rem;
     }
 
-    .dossier-header {
+    .dossier-nav {
         margin: 0 -1rem 1rem -1rem;
-        padding: 0.75rem 1rem 0.5rem 1rem;
+        padding: 0.6rem 1rem;
+        width: calc(100% + 2rem);
     }
 
     .hero-name {
