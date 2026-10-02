@@ -1,0 +1,772 @@
+/* ==========================================================================
+   CHRISTIAN LASCUÑA — EXECUTIVE PORTFOLIO & DOSSIER
+   Pure, clean, editorial two-faced card aesthetic inspired by the sample.
+   ========================================================================== */
+
+:root {
+    --paper: #f8f6f0;
+    --paper-dim: #f1ede3;
+    --ink: #191817;
+    --ink-muted: #5e5a54;
+    --ink-faint: #9c978f;
+    --rule: rgba(25, 24, 23, 0.14);
+    --rule-heavy: rgba(25, 24, 23, 0.35);
+    --font-display: 'Cinzel', serif;
+    --font-body: 'EB Garamond', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #121110;
+    font-family: var(--font-body);
+    color: var(--ink);
+}
+
+/* Fullscreen 3D Flip Deck */
+.viewport-deck {
+    width: 100vw;
+    height: 100vh;
+    perspective: 2000px;
+}
+
+.sheet-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.viewport-deck.flipped .sheet-card {
+    transform: rotateY(180deg);
+}
+
+/* Base Paper Finish (Authentic Cotton Grain) */
+.face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--paper);
+    background-image:
+        radial-gradient(var(--ink-faint) 0.65px, transparent 0.65px),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45), transparent 70%);
+    background-size: 10px 10px, 100% 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3.5rem 5rem;
+}
+
+/* Typographic Letterpress Effect */
+.letterpress {
+    color: var(--ink);
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   FRONT FACE (FULL SCREEN BUSINESS CARD)
+   ========================================= */
+.front-face {
+    cursor: default;
+}
+
+.top-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+}
+
+.direct-contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.direct-phone {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.direct-email {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+}
+
+.firm-block {
+    text-align: right;
+}
+
+.firm-title {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.firm-division {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-muted);
+    margin-top: 0.35rem;
+}
+
+.hero-identity {
+    text-align: center;
+    margin: auto 0;
+}
+
+.hero-name {
+    font-family: var(--font-display);
+    font-size: 3.6rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.hero-title {
+    font-size: 1.35rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+}
+
+.action-prompt-wrap {
+    margin-top: 2.2rem;
+}
+
+.inspect-button {
+    background: none;
+    border: 1px solid var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.8rem;
+    cursor: pointer;
+    color: var(--ink);
+    transition: all 0.2s ease;
+}
+
+.inspect-button:hover {
+    background-color: var(--ink);
+    color: var(--paper);
+}
+
+.bottom-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.4rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+}
+
+.bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.bottom-links a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--ink-faint);
+    transition: all 0.2s ease;
+}
+
+.bottom-links a:hover {
+    color: var(--ink);
+    border-bottom-style: solid;
+}
+
+.bottom-links .sep {
+    color: var(--ink-faint);
+}
+
+/* =========================================
+   BACK FACE (EXECUTIVE DOSSIER)
+   ========================================= */
+.back-face {
+    transform: rotateY(180deg);
+    background-color: var(--paper-dim);
+    padding: 3rem 5rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1.5rem;
+}
+
+/* Dossier Header & Specimen Profile */
+.dossier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.25rem;
+}
+
+.specimen-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Specimen Frame */
+.specimen-frame {
+    width: 80px;
+    height: 98px;
+    border: 1px solid var(--rule-heavy);
+    padding: 3px;
+    background: var(--paper);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.specimen-monogram {
+    width: 100%;
+    height: 100%;
+    background: #e4dfd4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.specimen-tag {
+    position: absolute;
+    bottom: -8px;
+    right: -6px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    padding: 1px 4px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.specimen-details h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.specimen-details p {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.specimen-id-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    margin-top: 4px;
+}
+
+/* Navigation Tabs */
+.dossier-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-self: flex-end;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.4rem 0.2rem;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--ink);
+}
+
+.tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    font-weight: 600;
+}
+
+/* Content Panes Viewport */
+.dossier-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tab-pane {
+    position: absolute;
+    inset: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    height: 100%;
+}
+
+.tab-pane.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* =========================================
+   TAB 1: PROJECTS (SPLIT DIRECTORY WITH IMAGE)
+   ========================================= */
+.projects-split {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+    height: 100%;
+}
+
+.project-index {
+    list-style: none;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-right: 1.5rem;
+    overflow-y: auto;
+}
+
+.project-card-item {
+    padding: 0.75rem 1rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.project-card-item:hover,
+.project-card-item.selected {
+    background-color: var(--paper);
+    border-color: var(--rule-heavy);
+}
+
+.proj-item-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.proj-item-type {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    margin-top: 2px;
+}
+
+.project-dossier-view {
+    display: flex;
+    gap: 2.2rem;
+    align-items: flex-start;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.proj-preview-box {
+    width: 250px;
+    height: 175px;
+    border: 1px solid var(--rule-heavy);
+    background: #e8e4db;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.proj-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(90%);
+    transition: filter 0.3s;
+    display: block;
+}
+
+.proj-preview-box img:hover {
+    filter: grayscale(0%);
+}
+
+.proj-detail-copy {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.proj-detail-copy h3 {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    letter-spacing: 0.1em;
+}
+
+/* Problem & Solution Design */
+.problem-solution-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.spec-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.spec-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    font-weight: 600;
+}
+
+.spec-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #383633;
+}
+
+.proj-stack {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.65rem;
+}
+
+.proj-links-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.proj-cta-link {
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.proj-cta-link:hover {
+    color: #000;
+}
+
+/* =========================================
+   TAB 2: CERTS (ARCHIVAL LEDGER)
+   ========================================= */
+.certs-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+}
+
+.ledger-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.ledger-table th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule-heavy);
+    padding: 0.75rem 0.5rem;
+    color: var(--ink-muted);
+}
+
+.ledger-table td {
+    padding: 0.9rem 0.5rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.mono-cell {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.verify-link {
+    color: var(--ink);
+    text-decoration: underline;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.roadmap-ledger-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+}
+
+.roadmap-head {
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+}
+
+/* =========================================
+   TAB 3: EXPERIENCE & QA (EXECUTIVE MEMO)
+   ========================================= */
+.timeline-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.memo-block {
+    border-left: 2px solid var(--rule-heavy);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.memo-block::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--ink);
+    border-radius: 50%;
+}
+
+.memo-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+.memo-role {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.memo-firm {
+    font-style: italic;
+    color: var(--ink-muted);
+}
+
+.memo-dates {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.memo-body {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #3b3935;
+}
+
+/* =========================================
+   TAB 4: DIRECT LINE / CONTACT
+   ========================================= */
+.contact-memo-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.contact-box {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 2rem 2.5rem;
+    max-width: 720px;
+}
+
+.contact-head {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.contact-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #383633;
+    margin-bottom: 1.5rem;
+}
+
+.contact-links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.contact-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    width: 150px;
+}
+
+.contact-val {
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-val:hover {
+    text-decoration: underline;
+}
+
+/* Back Footer */
+.dossier-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+}
+
+.return-btn {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--ink);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.return-btn:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================= */
+@media (max-width: 900px) {
+    .face {
+        padding: 2rem;
+    }
+
+    .hero-name {
+        font-size: 2.2rem;
+    }
+
+    .projects-split {
+        grid-template-columns: 1fr;
+    }
+
+    .project-index {
+        display: none;
+    }
+
+    .project-dossier-view {
+        flex-direction: column;
+    }
+
+    .proj-preview-box {
+        width: 100%;
+        height: 180px;
+    }
+
+    .dossier-nav {
+        gap: 0.75rem;
+    }
+
+    .tab-btn {
+        font-size: 0.95rem;
+    }
+
+    .bottom-meta-row {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .top-meta-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .firm-block {
+        text-align: left;
+    }
+}

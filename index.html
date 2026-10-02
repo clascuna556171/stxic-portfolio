@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christian Lascuña — Executive Portfolio &amp; Dossier</title>
+    <meta name="description"
+        content="Christian 'STXIC' Lascuña. Mentor, Full Stack, Tech Generalist and Quality Assurance at UM Skills Clinic." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="viewport-deck" id="deck">
+        <div class="sheet-card">
+
+            <!-- =========================================
+                 FRONT FACE (EXECUTIVE BUSINESS CARD)
+                 ========================================= -->
+            <section class="face front-face">
+                <header class="top-meta-row">
+                    <div class="direct-contact-block">
+                        <span class="direct-phone letterpress">+63 912 555 STXC</span>
+                        <span class="direct-email letterpress">c.lascuna556171@gmail.com</span>
+                    </div>
+                    <div class="firm-block">
+                        <h2 class="firm-title letterpress">STXIC LABS</h2>
+                        <div class="firm-division">AI Systems &bull; Systems Engineering</div>
+                    </div>
+                </header>
+
+                <main class="hero-identity">
+                    <h1 class="hero-name letterpress">Christian Lascuña</h1>
+                    <p class="hero-title letterpress">Mentor - Full Stack - Tech Generalist - AI Specialist</p>
+                    <div class="action-prompt-wrap">
+                        <button class="inspect-button" id="flipTrigger">Open Dossier &rarr;</button>
+                    </div>
+                </main>
+
+                <footer class="bottom-meta-row">
+                    <span>Davao City, Philippines &bull; University of Mindanao</span>
+                    <div class="bottom-links">
+                        <a href="mailto:clascuna556171@gmail.com">c.lascuna556171@gmail.com</a>
+                        <span class="sep">&bull;</span>
+                        <a href="https://github.com/clascuna556171" target="_blank"
+                            rel="noopener noreferrer">github.com/clascuna556171</a>
+                        <span class="sep">&bull;</span>
+                        <a href="https://linkedin.com/in/christian-lascuna" target="_blank"
+                            rel="noopener noreferrer">linkedin.com/in/christian-lascuna</a>
+                    </div>
+                </footer>
+            </section>
+
+
+            <!-- =========================================
+                 BACK FACE (EXECUTIVE DOSSIER)
+                 ========================================= -->
+            <section class="face back-face">
+
+                <!-- Header with Specimen photo & Navigation -->
+                <header class="dossier-header">
+                    <div class="specimen-profile">
+                        <!-- SPECIMEN PHOTO BOX -->
+                        <div class="specimen-frame">
+                            <div class="specimen-monogram">STXIC</div>
+                            <span class="specimen-tag"> keep it simple</span>
+                        </div>
+
+                        <div class="specimen-details">
+                            <h2 class="letterpress">Christian Lascuña</h2>
+                            <p>Mentor &bull; Full Stack Developer &bull; Tech Generalist &bull; AI Specialist</p>
+                        </div>
+                    </div>
+
+                    <!-- Clean Working Tabs -->
+                    <nav class="dossier-nav" role="tablist">
+                        <button class="tab-btn active" data-tab="projects" id="tabBtnProjects">Projects</button>
+                        <button class="tab-btn" data-tab="certs" id="tabBtnCerts">Certifications</button>
+                        <button class="tab-btn" data-tab="experience" id="tabBtnExp">Experience</button>
+                        <button class="tab-btn" data-tab="contact" id="tabBtnContact">Direct Line</button>
+                    </nav>
+                </header>
+
+                <!-- Dynamic Content Panes Viewport -->
+                <div class="dossier-viewport">
+
+                    <!-- =========================================
+                         TAB 1: PROJECTS (SPLIT DIRECTORY WITH IMAGE)
+                         ========================================= -->
+                    <div class="tab-pane active" id="pane-projects" role="tabpanel">
+                        <div class="projects-split">
+                            <ul class="project-index" id="projectIndexList">
+                                <li class="project-card-item selected" data-id="roninclips">
+                                    <div class="proj-item-title">RoninClips</div>
+                                    <div class="proj-item-type">Offline AI Video Clipper &bull; AI Pipeline</div>
+                                </li>
+                                <li class="project-card-item" data-id="pawfect">
+                                    <div class="proj-item-title">PawfectMatch</div>
+                                    <div class="proj-item-type">Pet Adoption System &bull; Live Production</div>
+                                </li>
+                                <li class="project-card-item" data-id="kinetic">
+                                    <div class="proj-item-title">Kinetic Portfolio</div>
+                                    <div class="proj-item-type">Canvas ASCII Raster &bull; Creative Tech</div>
+                                </li>
+                                <li class="project-card-item" data-id="automator">
+                                    <div class="proj-item-title">AI Task Automator</div>
+                                    <div class="proj-item-type">LLM Support Triage &bull; Python Automation</div>
+                                </li>
+                            </ul>
+
+                            <div class="project-dossier-view">
+                                <!-- Image Preview Box (Clean Grayscale with Hover) -->
+                                <div class="proj-preview-box">
+                                    <img id="detailImg"
+                                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                                        alt="Project Visual Specimen">
+                                </div>
+                                <div class="proj-detail-copy">
+                                    <h3 id="detailTitle" class="letterpress">RoninClips</h3>
+
+                                    <!-- Problem & Solution Block -->
+                                    <div class="problem-solution-block">
+                                        <div class="spec-block">
+                                            <span class="spec-label">THE PROBLEM:</span>
+                                            <p id="detailProblem" class="spec-text">Content creators waste hours
+                                                manually searching video footage for viral hooks, syncing subtitles, and
+                                                paying expensive recurring cloud subscriptions with privacy risks.</p>
+                                        </div>
+                                        <div class="spec-block">
+                                            <span class="spec-label">THE SOLUTION:</span>
+                                            <p id="detailSolution" class="spec-text">Engineered a 100% offline desktop
+                                                AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract
+                                                viral highlights, render animated karaoke subtitles, and auto-crop faces
+                                                locally.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="proj-stack" id="detailStack">TECH SPEC: Laravel / Python /
+                                        Faster-Whisper / Groq AI / FFmpeg</div>
+
+                                    <div class="proj-links-row">
+                                        <a href="https://github.com/clascuna556171/roninclips" class="proj-cta-link"
+                                            id="detailRepoLink" target="_blank" rel="noopener noreferrer">Access
+                                            Repository &rarr;</a>
+                                        <a href="#" class="proj-cta-link live-link" id="detailLiveLink" target="_blank"
+                                            rel="noopener noreferrer" style="display:none;">Launch Production System
+                                            &nearr;</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- =========================================
+                         TAB 2: CERTS (ARCHIVAL LEDGER)
+                         ========================================= -->
+                    <div class="tab-pane" id="pane-certs" role="tabpanel">
+                        <div class="certs-wrap">
+                            <table class="ledger-table">
+                                <thead>
+                                    <tr>
+                                        <th>Credential Specification</th>
+                                        <th>Issuing Authority</th>
+                                        <th>Date</th>
+                                        <th>Registry Hash / ID</th>
+                                        <th>Verification</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>IT Specialist &mdash; HTML and CSS</strong></td>
+                                        <td>Certiport (Pearson VUE)</td>
+                                        <td class="mono-cell">2026-06</td>
+                                        <td class="mono-cell">98d63ed4-7e4b...</td>
+                                        <td><a href="https://www.credly.com/badges/98d63ed4-7e4b-4da4-9e08-b6ad04b321c4/public_url"
+                                                target="_blank" rel="noopener noreferrer" class="verify-link">Credly
+                                                &nearr;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>IT Specialist &mdash; Databases</strong></td>
+                                        <td>Certiport (Pearson VUE)</td>
+                                        <td class="mono-cell">2026-05</td>
+                                        <td class="mono-cell">70cec043-2791...</td>
+                                        <td><a href="https://www.credly.com/badges/70cec043-2791-4093-afb1-cf4906e4b485/public_url"
+                                                target="_blank" rel="noopener noreferrer" class="verify-link">Credly
+                                                &nearr;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>IT Specialist &mdash; Java</strong></td>
+                                        <td>Certiport (Pearson VUE)</td>
+                                        <td class="mono-cell">2025-03</td>
+                                        <td class="mono-cell">de90e1a5-a0b4...</td>
+                                        <td><a href="https://www.credly.com/badges/de90e1a5-a0b4-4a86-821d-da32b0197c4e/public_url"
+                                                target="_blank" rel="noopener noreferrer" class="verify-link">Credly
+                                                &nearr;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Technical Support Fundamentals</strong></td>
+                                        <td>Google (Coursera)</td>
+                                        <td class="mono-cell">2026-04</td>
+                                        <td class="mono-cell">RTJPEJQZM584</td>
+                                        <td><a href="https://www.coursera.org/verify/RTJPEJQZM684" target="_blank"
+                                                rel="noopener noreferrer" class="verify-link">Coursera &nearr;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Introduction to AI</strong></td>
+                                        <td>Google (Coursera)</td>
+                                        <td class="mono-cell">2026-07</td>
+                                        <td class="mono-cell">0T37L3SGHHGB</td>
+                                        <td><a href="https://www.coursera.org/account/accomplishments/verify/0T37L3SGHHGB"
+                                                target="_blank" rel="noopener noreferrer" class="verify-link">Coursera
+                                                &nearr;</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Python Developer</strong></td>
+                                        <td>Sololearn</td>
+                                        <td class="mono-cell">2025-11</td>
+                                        <td class="mono-cell">CC-WBD8HXRV</td>
+                                        <td><a href="https://www.sololearn.com/certificates/CC-WBD8HXRV" target="_blank"
+                                                rel="noopener noreferrer" class="verify-link">Sololearn &nearr;</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="roadmap-ledger-bar">
+                                <span class="roadmap-head">ACTIVE ROADMAP:</span>
+                                <span class="roadmap-entry">&bull; AWS Solutions Architect (In Progress)</span>
+                                <span class="roadmap-entry">&bull; Foundations of Data Science (In Progress)</span>
+                                <span class="roadmap-entry">&bull; CompTIA Security+ (2026)</span>
+                                <span class="roadmap-entry">&bull; CKA Kubernetes (2026)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- =========================================
+                         TAB 3: EXPERIENCE (EXECUTIVE MEMO)
+                         ========================================= -->
+                    <div class="tab-pane" id="pane-experience" role="tabpanel">
+                        <div class="timeline-wrap">
+                            <!-- QA MENTOR -->
+                            <article class="memo-block">
+                                <header class="memo-header">
+                                    <div>
+                                        <span class="memo-role">QA Mentor</span>
+                                        <span class="memo-firm">&mdash; UM Skills Clinic, University of Mindanao</span>
+                                    </div>
+                                    <span class="memo-dates">2026 &mdash; PRESENT</span>
+                                </header>
+                                <p class="memo-body">
+                                    Lead mentorship initiatives in Quality Assurance for student developers and project
+                                    teams at the UM Skills Clinic. Coach peers on testing methodologies, defect
+                                    tracking, test-case authoring, and interface validation to ensure all clinic systems
+                                    meet strict reliability and usability benchmarks.
+                                </p>
+                            </article>
+
+                            <!-- CREATOR & FULL STACK DEV (RONINCLIP) -->
+                            <article class="memo-block">
+                                <header class="memo-header">
+                                    <div>
+                                        <span class="memo-role">Creator &amp; Full Stack Dev</span>
+                                        <span class="memo-firm">&mdash; RoninClip &bull; Local AI Video Clipper &amp;
+                                            Subtitle Engine (Open Source)</span>
+                                    </div>
+                                    <span class="memo-dates">2026 &mdash; PRESENT</span>
+                                </header>
+                                <p class="memo-body">
+                                    Extract viral hooks, generate word-by-word animated captions, apply smart face
+                                    cropping, and edit full videos locally &mdash; 100% offline &amp; free. Architected
+                                    the pipeline leveraging Laravel, Python, Faster-Whisper, Groq AI, and FFmpeg.
+                                </p>
+                            </article>
+
+                            <!-- SOCIAL MEDIA MANAGER (REDDIT) -->
+                            <article class="memo-block">
+                                <header class="memo-header">
+                                    <div>
+                                        <span class="memo-role">Social Media Manager (Reddit)</span>
+                                        <span class="memo-firm">&mdash; Freelance / VA</span>
+                                    </div>
+                                    <span class="memo-dates">2026 &mdash; PRESENT</span>
+                                </header>
+                                <p class="memo-body">
+                                    Specialize in Reddit community management, organic growth, and brand engagement.
+                                    Responsible for strategically planning and executing content posting schedules
+                                    across targeted subreddits while adhering to strict community guidelines. Actively
+                                    monitor comment sections, respond to user inquiries, and foster authentic
+                                    conversations to build brand trust, drive engagement, and increase community
+                                    visibility.
+                                </p>
+                            </article>
+
+                            <!-- FULL-STACK DEVELOPER / CREATOR (PAWFECTMATCH) -->
+                            <article class="memo-block">
+                                <header class="memo-header">
+                                    <div>
+                                        <span class="memo-role">Full-Stack Developer / Creator</span>
+                                        <span class="memo-firm">&mdash; PawfectMatch &bull; Pet Adoption Management
+                                            System (Freelance)</span>
+                                    </div>
+                                    <span class="memo-dates">2025</span>
+                                </header>
+                                <p class="memo-body">
+                                    Developed PawfectMatch, a comprehensive Pet Adoption Management System designed to
+                                    streamline the adoption process between animal shelters, rescue organizations, and
+                                    potential pet adopters. Built the end-to-end platform featuring user authentication,
+                                    pet profile management, adoption application tracking, and an intuitive dashboard to
+                                    improve matching efficiency and increase successful animal placements.
+                                </p>
+                            </article>
+
+                            <!-- BSIT UNIVERSITY OF MINDANAO -->
+                            <article class="memo-block">
+                                <header class="memo-header">
+                                    <div>
+                                        <span class="memo-role">Bachelor of Science in Information Technology</span>
+                                        <span class="memo-firm">&mdash; University of Mindanao</span>
+                                    </div>
+                                    <span class="memo-dates">2024 &mdash; PRESENT</span>
+                                </header>
+                                <p class="memo-body">
+                                    Pursuing a Bachelor of Science in Information Technology at the University of
+                                    Mindanao, building a strong foundation in software development, system analysis,
+                                    database management, and modern web technologies. Alongside academic studies,
+                                    actively taking on freelance projects and developing personal portfolio applications
+                                    to gain practical, hands-on industry experience in coding, problem-solving, and
+                                    delivering client-focused digital solutions.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- =========================================
+                         TAB 4: DIRECT LINE / CONTACT
+                         ========================================= -->
+                    <div class="tab-pane" id="pane-contact" role="tabpanel">
+                        <div class="contact-memo-wrap">
+                            <div class="contact-box">
+                                <h3 class="contact-head letterpress">Direct Operational Channels</h3>
+                                <p class="contact-text">
+                                    Open for freelance engineering, capstone development, QA consultation, and
+                                    full-stack systems architecture. Available for contract work and remote
+                                    collaborations.
+                                </p>
+                                <div class="contact-links-grid">
+                                    <div class="contact-row">
+                                        <span class="contact-label">EMAIL DISPATCH:</span>
+                                        <a href="mailto:c.lascuna556171@gmail.com"
+                                            class="contact-val">c.lascuna556171@gmail.com</a>
+                                    </div>
+                                    <div class="contact-row">
+                                        <span class="contact-label">GITHUB REPO:</span>
+                                        <a href="https://github.com/clascuna556171" target="_blank"
+                                            rel="noopener noreferrer" class="contact-val">github.com/clascuna556171
+                                            &nearr;</a>
+                                    </div>
+                                    <div class="contact-row">
+                                        <span class="contact-label">LINKEDIN:</span>
+                                        <a href="https://linkedin.com/in/christian-lascuna" target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="contact-val">linkedin.com/in/christian-lascuna &nearr;</a>
+                                    </div>
+                                    <div class="contact-row">
+                                        <span class="contact-label">BASE LOCATION:</span>
+                                        <span class="contact-val">Davao City, Philippines (UTC+8)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Back Footer -->
+                <footer class="dossier-footer">
+                    <span>Record Classification: STXIC-001 // Unclassified</span>
+                    <button class="return-btn" id="returnTrigger">&larr; Return to Front Face</button>
+                </footer>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
