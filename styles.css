@@ -51,7 +51,7 @@ body {
     transform: rotateY(180deg);
 }
 
-/* Base Paper Finish (Authentic 300gsm Cotton-Linen Rag & Micro-Dot Grid) */
+/* Base Paper Finish (Authentic Cotton Grain) */
 .face {
     position: absolute;
     inset: 0;
@@ -59,32 +59,23 @@ body {
     height: 100%;
     background-color: var(--paper);
     background-image:
-        /* 1. Tactile Cotton/Linen Rag Fiber Noise */
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' width='240' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23paperNoise)'/%3E%3C/svg%3E"),
-        /* 2. Precision Micro-Dot Intaglio Grid */
-        radial-gradient(var(--ink-faint) 0.55px, transparent 0.55px),
-        /* 3. Ambient Paper Sheen Vignette */
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.55), transparent 75%);
-    background-size: 180px 180px, 10px 10px, 100% 100%;
+        radial-gradient(var(--ink-faint) 0.65px, transparent 0.65px),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45), transparent 70%);
+    background-size: 10px 10px, 100% 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 3.5rem 5rem;
-    box-shadow: var(--shadow-card);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    transition: transform 0.85s cubic-bezier(0.19, 1, 0.22, 1);
-    overflow: hidden;
 }
 
-/* Authentic Intaglio Letterpress Indentation Utility */
+/* Typographic Letterpress Effect */
 .letterpress {
     color: var(--ink);
     text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.85),
-        0 -0.5px 0.5px rgba(0, 0, 0, 0.22);
+        0 1px 0 rgba(255, 255, 255, 0.9),
+        0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
 /* =========================================
@@ -98,52 +89,22 @@ body {
     -webkit-user-select: none;
 }
 
-/* Blind-Debossed Archival Watermark Seal */
+/* Blind-Debossed Papermill Watermark */
 .card-watermark {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-10deg);
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(6.5rem, 18vw, 11.5rem);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: rgba(25, 24, 23, 0.052);
     pointer-events: none;
     user-select: none;
     z-index: 0;
-}
-
-.watermark-seal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1.5px dashed rgba(25, 24, 23, 0.06);
-    border-radius: 4px;
-    padding: 1.25rem 2.75rem;
-    background: transparent;
-}
-
-.watermark-crest {
-    font-family: var(--font-display);
-    font-size: clamp(5.5rem, 15vw, 9.5rem);
-    font-weight: 700;
-    letter-spacing: 0.24em;
-    color: rgba(25, 24, 23, 0.055);
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.85), -1px -1px 0 rgba(0, 0, 0, 0.04);
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.75), -1px -1px 0 rgba(0, 0, 0, 0.05);
     line-height: 1;
-}
-
-.watermark-rule {
-    width: 72%;
-    height: 1px;
-    background: rgba(25, 24, 23, 0.045);
-    margin: 0.5rem 0;
-}
-
-.watermark-archival {
-    font-family: var(--font-mono);
-    font-size: clamp(0.55rem, 1.1vw, 0.68rem);
-    letter-spacing: 0.32em;
-    color: rgba(25, 24, 23, 0.048);
-    text-shadow: 0.5px 0.5px 0 rgba(255, 255, 255, 0.7);
-    white-space: nowrap;
 }
 
 .top-meta-row {
@@ -160,10 +121,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    background: var(--paper);
-    padding: 0.3rem 0.8rem 0.3rem 0.2rem;
-    box-shadow: 0 0 18px 12px var(--paper);
-    border-radius: 2px;
 }
 
 .direct-phone {
@@ -185,10 +142,6 @@ body {
 
 .firm-block {
     text-align: right;
-    background: var(--paper);
-    padding: 0.3rem 0.2rem 0.3rem 0.8rem;
-    box-shadow: 0 0 18px 12px var(--paper);
-    border-radius: 2px;
 }
 
 .firm-title {
@@ -213,31 +166,13 @@ body {
     margin: auto 0;
 }
 
-/* Central Title: Authentic Intaglio Letterpress Indentation & Solid Knockout Mask */
 .hero-name {
     font-family: var(--font-display);
     font-size: 3.6rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     margin-bottom: 0.8rem;
-    color: var(--ink);
-    display: inline-block;
-    position: relative;
-    /* Solid paper knockout mask completely eliminates dot grid bleeding */
-    background: var(--paper);
-    padding: 0.4rem 1.6rem;
-    box-shadow: 0 0 24px 16px var(--paper);
-    border-radius: 2px;
-    /* Executive Blind-Deboss & Intaglio Stamp Indentation */
-    text-shadow:
-        0 1px 0.5px rgba(255, 255, 255, 0.95),
-        1px 1.5px 1px rgba(255, 255, 255, 0.7),
-        0 -1px 0.5px rgba(0, 0, 0, 0.45),
-        -0.5px -0.5px 0.5px rgba(25, 24, 23, 0.3),
-        0 2px 4px rgba(25, 24, 23, 0.08);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
 }
 
 .hero-title {
@@ -245,12 +180,6 @@ body {
     letter-spacing: 0.26em;
     text-transform: uppercase;
     color: var(--ink-muted);
-    display: inline-block;
-    background: var(--paper);
-    padding: 0.25rem 1.2rem;
-    box-shadow: 0 0 18px 10px var(--paper);
-    border-radius: 2px;
-    text-shadow: 0 1px 0.5px rgba(255, 255, 255, 0.8), 0 -0.5px 0.5px rgba(0, 0, 0, 0.15);
 }
 
 .action-prompt-wrap {
@@ -262,15 +191,13 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--paper);
+    background: transparent;
     border: none;
-    padding: 0.45rem;
-    border-radius: 50%;
-    box-shadow: 0 0 14px 8px var(--paper);
+    padding: 0.4rem;
     cursor: pointer;
     color: var(--ink-faint);
     transition: color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
-    opacity: 0.65;
+    opacity: 0.6;
 }
 
 .card-turn-prompt .prompt-glyph {
@@ -285,7 +212,7 @@ body {
 @keyframes turn-glyph-pulse {
     0%, 72% {
         transform: rotate(0deg);
-        opacity: 0.65;
+        opacity: 0.6;
     }
     86% {
         transform: rotate(180deg);
@@ -293,7 +220,7 @@ body {
     }
     100% {
         transform: rotate(360deg);
-        opacity: 0.65;
+        opacity: 0.6;
     }
 }
 
@@ -310,8 +237,6 @@ body {
 }
 
 .bottom-meta-row {
-    position: relative;
-    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -320,21 +245,12 @@ body {
     font-size: 0.9rem;
     letter-spacing: 0.12em;
     color: var(--ink-muted);
-    background: var(--paper);
-    box-shadow: 0 -8px 20px 10px var(--paper);
-}
-
-.meta-location {
-    background: var(--paper);
-    padding: 0.15rem 0.5rem 0.15rem 0;
 }
 
 .bottom-links {
     display: flex;
     align-items: center;
     gap: 0.65rem;
-    background: var(--paper);
-    padding: 0.15rem 0 0.15rem 0.5rem;
 }
 
 .bottom-links a {
@@ -372,18 +288,12 @@ body {
     align-items: flex-end;
     border-bottom: 2px solid var(--ink);
     padding-bottom: 1.25rem;
-    background: var(--paper-dim);
-    box-shadow: 0 4px 16px 8px var(--paper-dim);
-    position: relative;
-    z-index: 2;
 }
 
 .specimen-profile {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    background: var(--paper-dim);
-    box-shadow: 0 0 12px 6px var(--paper-dim);
 }
 
 /* Specimen Frame */
@@ -393,7 +303,7 @@ body {
     border: 1px solid var(--rule-heavy);
     padding: 3px;
     background: var(--paper);
-    box-shadow: 0 0 0 3px var(--paper-dim), 2px 2px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
@@ -538,8 +448,6 @@ body {
     padding: 0.75rem 1rem;
     border: 1px solid transparent;
     cursor: pointer;
-    background: var(--paper-dim);
-    box-shadow: 0 0 0 2px var(--paper-dim);
     transition: all 0.2s ease;
 }
 
@@ -547,7 +455,6 @@ body {
 .project-card-item.selected {
     background-color: var(--paper);
     border-color: var(--rule-heavy);
-    box-shadow: 0 1px 4px rgba(25, 24, 23, 0.06);
 }
 
 .proj-item-title {
@@ -570,13 +477,11 @@ body {
     align-items: flex-start;
     background: var(--paper);
     border: 1px solid var(--rule);
-    box-shadow: 0 0 0 3px var(--paper-dim), 0 2px 12px rgba(0, 0, 0, 0.05);
     padding: 2rem;
     overflow-y: auto;
     width: 100%;
 }
 
-/* Hero Image Preview Box: Crisp Protective Halo */
 .proj-preview-box {
     width: 250px;
     height: 175px;
@@ -584,7 +489,6 @@ body {
     background: #e8e4db;
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: 0 0 0 3px var(--paper), 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .proj-preview-box img {
@@ -632,7 +536,6 @@ body {
     background: rgba(25, 24, 23, 0.05);
     padding: 0.2rem 0.55rem;
     border: 1px solid var(--rule);
-    box-shadow: 0 0 0 2px var(--paper);
     font-weight: 500;
 }
 
@@ -678,11 +581,6 @@ body {
     letter-spacing: 0.12em;
     color: var(--ink-muted);
     font-weight: 600;
-    display: inline-block;
-    background: var(--paper);
-    padding: 0.1rem 0.35rem;
-    margin-left: -0.35rem;
-    border-radius: 2px;
 }
 
 .spec-text {
@@ -698,7 +596,6 @@ body {
     color: var(--ink-muted);
     border-top: 1px solid var(--rule);
     padding-top: 0.65rem;
-    background: var(--paper);
 }
 
 .proj-links-row {
@@ -924,10 +821,6 @@ body {
     text-transform: uppercase;
     gap: 1.5rem;
     overflow: hidden;
-    background: var(--paper-dim);
-    box-shadow: 0 -4px 16px 8px var(--paper-dim);
-    position: relative;
-    z-index: 2;
 }
 
 .footer-telemetry {
@@ -1115,8 +1008,6 @@ body {
         font-size: clamp(1.85rem, 7.5vw, 2.45rem);
         letter-spacing: 0.16em;
         line-height: 1.18;
-        padding: 0.25rem 0.8rem;
-        box-shadow: 0 0 16px 10px var(--paper);
     }
 
     .hero-title {
@@ -1124,22 +1015,11 @@ body {
         letter-spacing: 0.05em;
         line-height: 1.45;
         margin-top: 0.65rem;
-        padding: 0.2rem 0.6rem;
-        box-shadow: 0 0 12px 8px var(--paper);
         color: var(--ink-muted);
     }
 
-    .watermark-seal {
-        padding: 0.75rem 1.25rem;
-    }
-
-    .watermark-crest {
-        font-size: clamp(3.5rem, 12vw, 5.5rem);
-    }
-
-    .watermark-archival {
-        font-size: 0.52rem;
-        letter-spacing: 0.2em;
+    .card-watermark {
+        font-size: clamp(4.5rem, 16vw, 7.5rem);
     }
 
     .action-prompt-wrap {
@@ -1209,11 +1089,9 @@ body {
         padding: 0 0 0.4rem 0;
         margin: 0;
         border-bottom: 1px solid var(--rule);
-        background: var(--paper-dim);
-        box-shadow: 0 2px 10px 4px var(--paper-dim);
+        background: transparent;
+        box-shadow: none;
         width: 100%;
-        position: relative;
-        z-index: 2;
     }
 
     .specimen-profile {
@@ -1797,8 +1675,6 @@ body {
 
     .hero-name {
         font-size: 1.75rem;
-        padding: 0.2rem 0.6rem;
-        box-shadow: 0 0 12px 8px var(--paper);
     }
 
     .front-face .top-meta-row {
@@ -1817,17 +1693,8 @@ body {
         font-size: 1.02rem;
     }
 
-    .watermark-seal {
-        padding: 0.5rem 0.85rem;
-    }
-
-    .watermark-crest {
-        font-size: clamp(2.8rem, 11vw, 4.2rem);
-    }
-
-    .watermark-archival {
-        font-size: 0.46rem;
-        letter-spacing: 0.16em;
+    .card-watermark {
+        font-size: clamp(3.8rem, 18vw, 5.5rem);
     }
 
     .card-turn-prompt .prompt-glyph {

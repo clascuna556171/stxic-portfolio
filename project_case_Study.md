@@ -43,9 +43,6 @@ Content creators waste hours manually searching video footage for viral hooks, s
 **THE SOLUTION:**  
 Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.
 
-**PERFORMANCE:**  
-Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.
-
 **TECH SPEC: LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG**
 
 ---
@@ -59,9 +56,6 @@ Algorithmic e-commerce and social commerce platforms hijack consumer dopamine lo
 
 **THE SOLUTION:**  
 Architected an intentional friction mobile engine using Flutter and Groq LPU (`llama-3.3-70b-versatile`) that enforces 24–72h dopamine cooling vault locks, computes physical labor-hour costs, projects S&P 500 compound opportunity loss, and delivers sub-second AI reality checks with smart budget dupes.
-
-**PERFORMANCE:**  
-<850ms Groq LPU inference latency • 74%+ impulse cancellation rate • 100% offline fallback resilience • 111 passing test suites.
 
 **TECH SPEC: FLUTTER / DART / FIREBASE / GROQ LPU / LLAMA-3.3-70B / PROVIDER**
 
@@ -77,9 +71,6 @@ A high-volume footwear retailer with over 100,000 online followers struggled wit
 **THE SOLUTION:**  
 Engineered a centralized batch-to-unit serialized inventory management and multi-channel live-selling POS system in Laravel 11, implementing unique SKU barcode generation, atomic reservation locks that eliminate live-stream double-selling, GCash payment verification workflows, and automated per-unit net profit calculations.
 
-**PERFORMANCE:**  
-0% double-selling across 100k+ follower live drops • 500-pair intake digitized in minutes • 100% per-unit net profit visibility • Automated parcel waybill sync.
-
 **TECH SPEC: LARAVEL 11 / PHP 8.2 / MYSQL / ALPINE.JS / TAILWIND CSS / BLADE / DOMPDF**
 
 ---
@@ -93,9 +84,6 @@ Students and developers juggle fragmented, expensive subscription apps for tasks
 
 **THE SOLUTION:**  
 Engineered a privacy-first, zero-cost Personal Life OS combining an encrypted local-first vault, Blackboard student automation engine (BADS-DE), personal finance & FX tracker, hybrid local/cloud AI (Groq + Ollama/Qwen), and live Obsidian sync built in Next.js 14, React 19, TypeScript, and Firebase.
-
-**PERFORMANCE:**  
-$0/mo recurring operational spend • LCP < 2.5s & INP < 200ms Core Web Vitals • Zero data leakage via AES-GCM encryption • Sub-500ms hybrid AI routing.
 
 **TECH SPEC: NEXT.JS / REACT 19 / TYPESCRIPT / TAILWIND CSS / FIREBASE / GROQ / OLLAMA / CAPACITOR / PWA**
 
@@ -111,9 +99,6 @@ AI agent tooling is crippled by fragmented runtime protocols (MCP, Antigravity, 
 **THE SOLUTION:**  
 Architected the "LLVM for AI Agent Skills"—a zero-dependency static compiler that ingests Python AST, TypeScript SDKs, Bash scripts, and OpenAPI specs, compiling them into universal agent tools with hardcoded deterministic security guardrails in ~2 milliseconds at $0 cloud cost.
 
-**PERFORMANCE:**  
-~2ms static compile time • 100% deterministic SSRF & path-traversal blocking • 4-in-1 multi-runtime target emission • $0 LLM token overhead during compilation.
-
 **TECH SPEC: TYPESCRIPT / NODE.JS / AST PARSING / MCP / ANTIGRAVITY / CURSORRULES / OPENAPI / CLI**
 
 ---
@@ -127,9 +112,6 @@ Customer support engineering teams face crushing queues of unclassified tickets,
 
 **THE SOLUTION:**  
 Engineered an asynchronous support ticket triage engine using FastAPI, Redis/RQ queues, and Groq LLMs that auto-classifies sentiment and priority, auto-responds to high-confidence tickets, and broadcasts HMAC-signed payloads across downstream webhooks.
-
-**PERFORMANCE:**  
-Sub-second asynchronous ticket ingestion • 70% manual triage reduction via auto-response • 100% HMAC SHA-256 webhook delivery integrity • 65 automated passing tests.
 
 **TECH SPEC: FASTAPI / PYTHON 3.12 / REDIS / RQ / SQLALCHEMY / MYSQL / GROQ LLM / JWT / DOCKER**
 
@@ -145,9 +127,6 @@ Animal rescue shelters operate on fragmented paperwork, phone records, and unstr
 **THE SOLUTION:**  
 Engineered an end-to-end pet adoption lifecycle platform using Laravel MVC, MySQL, Tailwind CSS, and Alpine.js, featuring cinematic video showcases, dynamic temperament filtering, role-based shelter management, and automated 7-day post-adoption check-in email dispatchers.
 
-**PERFORMANCE:**  
-100% automated 7-day post-adoption check-in dispatch • 0 lost adoption applications • Sub-100ms multi-attribute filter response • Zero paper record dependency.
-
 **TECH SPEC: LARAVEL / PHP 8.2 / MYSQL / BLADE / TAILWIND CSS / ALPINE.JS / DOCKER / VITE**
 
 ---
@@ -161,9 +140,6 @@ Developer portfolios are dominated by generic, cookie-cutter SaaS templates that
 
 **THE SOLUTION:**  
 Architected an Awwwards-inspired kinetic web portfolio and AI Concierge powered by Laravel 11, GSAP 3, and Lenis, featuring physics-based magnetic cursor dynamics, living SVG morphing shaders, an authenticated `/admin` CMS, and a context-grounded Groq AI assistant with offline fallback.
-
-**PERFORMANCE:**  
-Locked 60fps Lenis inertial scroll physics • Sub-second Groq AI concierge responses • 0 cumulative layout shift (CLS 0.0) • Multi-stage Docker zero-downtime deployment.
 
 **TECH SPEC: LARAVEL 11 / PHP 8.3 / GSAP 3 / LENIS / GROQ AI / TAILWIND CSS / DOCKER / MYSQL**
 
