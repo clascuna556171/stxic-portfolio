@@ -516,11 +516,14 @@ if (chartImg) {
         if (playSound) playCardSnapSound();
 
         const isMobile = window.innerWidth <= 768;
-        const xOffset = isMobile ? 110 : 240;
-        const xOffsetFar = isMobile ? 200 : 420;
+        const xOffset = isMobile ? 110 : 260;
+        const xOffsetFar = isMobile ? 200 : 470;
 
         cardElements.forEach((card, index) => {
-            const diff = index - activeIndex;
+            let diff = index - activeIndex;
+            // Symmetrical wrap-around distribution across all cards
+            if (diff > totalCards / 2) diff -= totalCards;
+            if (diff < -totalCards / 2) diff += totalCards;
 
             // Always un-flip non-center cards
             if (diff !== 0) {
@@ -730,4 +733,33 @@ if (chartImg) {
     // Initial Deck Render (Default to 3D Deck)
     setViewMode('deck');
     updateCarousel(false);
+})();
+
+// Direct Line Email Copy Handler
+(function initDirectLineCopy() {
+    const btnCopyEmail = document.getElementById('btnCopyEmail');
+    const copyEmailText = document.getElementById('copyEmailText');
+    if (btnCopyEmail && copyEmailText) {
+        btnCopyEmail.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const email = 'c.lascuna556171@gmail.com';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(() => {
+                    const originalText = copyEmailText.textContent;
+                    copyEmailText.textContent = 'COPIED TO CLIPBOARD ✓';
+                    btnCopyEmail.style.borderColor = 'var(--ink)';
+                    btnCopyEmail.style.background = 'rgba(25, 24, 23, 0.08)';
+                    setTimeout(() => {
+                        copyEmailText.textContent = originalText;
+                        btnCopyEmail.style.borderColor = '';
+                        btnCopyEmail.style.background = '';
+                    }, 2200);
+                }).catch(() => {
+                    window.location.href = `mailto:${email}`;
+                });
+            } else {
+                window.location.href = `mailto:${email}`;
+            }
+        });
+    }
 })();
