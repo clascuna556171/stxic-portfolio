@@ -11,7 +11,7 @@ const projects = {
         solution: "Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.",
         performance: "Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.",
         stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
-        img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80",
+        img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=85",
         repo: "https://github.com/clascuna556171/roninclips",
         live: null
     },
@@ -41,7 +41,7 @@ const projects = {
         solution: "Engineered a centralized batch-to-unit serialized inventory management and multi-channel live-selling POS system in Laravel 11, implementing unique SKU barcode generation, atomic reservation locks that eliminate live-stream double-selling, GCash payment verification workflows, and automated per-unit net profit calculations.",
         performance: "0% double-selling across 100k+ follower live drops • 500-pair intake digitized in minutes • 100% per-unit net profit visibility • Automated parcel waybill sync.",
         stack: "LARAVEL 11 / PHP 8.2 / MYSQL / ALPINE.JS / TAILWIND CSS / BLADE / DOMPDF",
-        img: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80",
+        img: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=85",
         repo: "https://github.com/clascuna556171/shoeboy",
         live: null
     },
@@ -56,7 +56,7 @@ const projects = {
         solution: "Engineered a privacy-first, zero-cost Personal Life OS combining an encrypted local-first vault, Blackboard student automation engine (BADS-DE), personal finance & FX tracker, hybrid local/cloud AI (Groq + Ollama/Qwen), and live Obsidian sync built in Next.js 14, React 19, TypeScript, and Firebase.",
         performance: "$0/mo recurring operational spend • LCP < 2.5s & INP < 200ms Core Web Vitals • Zero data leakage via AES-GCM encryption • Sub-500ms hybrid AI routing.",
         stack: "NEXT.JS / REACT 19 / TYPESCRIPT / TAILWIND CSS / FIREBASE / GROQ / OLLAMA / CAPACITOR / PWA",
-        img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
+        img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=85",
         repo: "https://github.com/clascuna556171/stxic-os",
         live: null
     },
@@ -71,7 +71,7 @@ const projects = {
         solution: "Architected the \"LLVM for AI Agent Skills\"—a zero-dependency static compiler that ingests Python AST, TypeScript SDKs, Bash scripts, and OpenAPI specs, compiling them into universal agent tools with hardcoded deterministic security guardrails in ~2 milliseconds at $0 cloud cost.",
         performance: "~2ms static compile time • 100% deterministic SSRF & path-traversal blocking • 4-in-1 multi-runtime target emission • $0 LLM token overhead during compilation.",
         stack: "TYPESCRIPT / NODE.JS / AST PARSING / MCP / ANTIGRAVITY / CURSORRULES / OPENAPI / CLI",
-        img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+        img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=85",
         repo: "https://github.com/clascuna556171/pollyskill",
         live: null
     },
@@ -86,7 +86,7 @@ const projects = {
         solution: "Engineered an asynchronous support ticket triage engine using FastAPI, Redis/RQ queues, and Groq LLMs that auto-classifies sentiment and priority, auto-responds to high-confidence tickets, and broadcasts HMAC-signed payloads across downstream webhooks.",
         performance: "Sub-second asynchronous ticket ingestion • 70% manual triage reduction via auto-response • 100% HMAC SHA-256 webhook delivery integrity • 65 automated passing tests.",
         stack: "FASTAPI / PYTHON 3.12 / REDIS / RQ / SQLALCHEMY / MYSQL / GROQ LLM / JWT / DOCKER",
-        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85",
         repo: "https://github.com/clascuna556171/ai-task-automator",
         live: null
     },
@@ -101,7 +101,7 @@ const projects = {
         solution: "Engineered an end-to-end pet adoption lifecycle platform using Laravel MVC, MySQL, Tailwind CSS, and Alpine.js, featuring cinematic video showcases, dynamic temperament filtering, role-based shelter management, and automated 7-day post-adoption check-in email dispatchers.",
         performance: "100% automated 7-day post-adoption check-in dispatch • 0 lost adoption applications • Sub-100ms multi-attribute filter response • Zero paper record dependency.",
         stack: "LARAVEL / PHP 8.2 / MYSQL / BLADE / TAILWIND CSS / ALPINE.JS / DOCKER / VITE",
-        img: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80",
+        img: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=85",
         repo: "https://github.com/clascuna556171/pawfect-match",
         live: "https://pawfect-match-1gqf.onrender.com/"
     },
