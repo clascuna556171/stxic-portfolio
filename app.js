@@ -3,6 +3,10 @@ const projects = {
     roninclips: {
         title: "RoninClips",
         badge: "100% OFFLINE AI ENGINE",
+        monogram: "RC",
+        subtitle: "Offline AI Video Clipper & Subtitle Engine",
+        summary: "Extracts viral highlights, renders animated subtitles, and auto-crops faces locally at zero cloud egress cost.",
+        tokens: ["LARAVEL", "PYTHON", "WHISPER", "GROQ", "FFMPEG"],
         problem: "Content creators waste hours manually searching video footage for viral hooks, syncing subtitles, and paying expensive recurring cloud subscriptions with privacy risks.",
         solution: "Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.",
         performance: "Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.",
@@ -13,7 +17,11 @@ const projects = {
     },
     worthit: {
         title: "WorthIt",
-        badge: "NEUROECONOMIC FRICTION ENGINE",
+        badge: "NEUROECONOMIC ENGINE",
+        monogram: "WI",
+        subtitle: "Behavioral Friction & Impulse Shield App",
+        summary: "Enforces 24–72h dopamine cooling vaults on impulsive checkouts, computes physical labor costs, and projects S&P 500 compound loss.",
+        tokens: ["FLUTTER", "DART", "GROQ LPU", "FIREBASE", "PROVIDER"],
         problem: "Algorithmic e-commerce and social commerce platforms hijack consumer dopamine loops through frictionless 1-click checkouts and manufactured urgency, triggering chronic compulsive spending and severe buyer's remorse.",
         solution: "Architected an intentional friction mobile engine using Flutter and Groq LPU (llama-3.3-70b-versatile) that enforces 24–72h dopamine cooling vault locks, computes physical labor-hour costs, projects S&P 500 compound opportunity loss, and delivers sub-second AI reality checks with smart budget dupes.",
         performance: "<850ms Groq LPU inference latency • 74%+ impulse cancellation rate • 100% offline fallback resilience • 111 passing test suites.",
@@ -24,7 +32,11 @@ const projects = {
     },
     shoeboy: {
         title: "The Shoe Boy",
-        badge: "ENTERPRISE POS & LIVE SELLING",
+        badge: "ENTERPRISE LIVE POS",
+        monogram: "SB",
+        subtitle: "Serialized Inventory & High-Concurrency POS",
+        summary: "Atomic reservation locks and barcode SKU dispatch for high-volume live selling, eliminating double-selling across 500-pair drops.",
+        tokens: ["LARAVEL 11", "PHP 8.2", "MYSQL", "ALPINE.JS", "DOMPDF"],
         problem: "A high-volume footwear retailer with over 100,000 online followers struggled with chaotic Facebook Live sales, where verbal claim codes and flooded Messenger inboxes caused rampant double-selling, dispute delays, and untracked inventory across 500-pair wholesale bales.",
         solution: "Engineered a centralized batch-to-unit serialized inventory management and multi-channel live-selling POS system in Laravel 11, implementing unique SKU barcode generation, atomic reservation locks that eliminate live-stream double-selling, GCash payment verification workflows, and automated per-unit net profit calculations.",
         performance: "0% double-selling across 100k+ follower live drops • 500-pair intake digitized in minutes • 100% per-unit net profit visibility • Automated parcel waybill sync.",
@@ -35,7 +47,11 @@ const projects = {
     },
     stxic: {
         title: "STXIC (Personal Life OS)",
-        badge: "ZERO-SUBSCRIPTION LIFE OS",
+        badge: "ENCRYPTED LIFE OS",
+        monogram: "SX",
+        subtitle: "Zero-Subscription Student Automation PWA",
+        summary: "Encrypted local vault, Blackboard automation (BADS-DE), personal finance tracker, and hybrid local/cloud AI in Next.js 14.",
+        tokens: ["NEXT.JS 14", "REACT 19", "TYPESCRIPT", "GROQ", "PWA"],
         problem: "Students and developers juggle fragmented, expensive subscription apps for tasks, notes, course portals, and finance, leaving their sensitive personal data exposed to commercial telemetry with zero offline privacy.",
         solution: "Engineered a privacy-first, zero-cost Personal Life OS combining an encrypted local-first vault, Blackboard student automation engine (BADS-DE), personal finance & FX tracker, hybrid local/cloud AI (Groq + Ollama/Qwen), and live Obsidian sync built in Next.js 14, React 19, TypeScript, and Firebase.",
         performance: "$0/mo recurring operational spend • LCP < 2.5s & INP < 200ms Core Web Vitals • Zero data leakage via AES-GCM encryption • Sub-500ms hybrid AI routing.",
@@ -46,7 +62,11 @@ const projects = {
     },
     polyskill: {
         title: "PolySkill",
-        badge: "UNIVERSAL SKILL COMPILER",
+        badge: "STATIC SKILL COMPILER",
+        monogram: "PS",
+        subtitle: "The LLVM Compiler for AI Agent Skills",
+        summary: "Compiles Python AST, TypeScript, and OpenAPI into hardened agent tools in ~2ms with deterministic security guardrails.",
+        tokens: ["TYPESCRIPT", "NODE.JS", "AST PARSING", "MCP", "SECURITY"],
         problem: "AI agent tooling is crippled by fragmented runtime protocols (MCP, Antigravity, Cursorrules, OpenAI) and vulnerable to prompt injection, SSRF, directory traversal, and unconfirmed destructive actions that block enterprise adoption.",
         solution: "Architected the \"LLVM for AI Agent Skills\"—a zero-dependency static compiler that ingests Python AST, TypeScript SDKs, Bash scripts, and OpenAPI specs, compiling them into universal agent tools with hardcoded deterministic security guardrails in ~2 milliseconds at $0 cloud cost.",
         performance: "~2ms static compile time • 100% deterministic SSRF & path-traversal blocking • 4-in-1 multi-runtime target emission • $0 LLM token overhead during compilation.",
@@ -57,7 +77,11 @@ const projects = {
     },
     automator: {
         title: "AI Ticket Automator",
-        badge: "ASYNC SUPPORT TRIAGE ENGINE",
+        badge: "ASYNC SUPPORT ENGINE",
+        monogram: "AT",
+        subtitle: "Asynchronous Enterprise Support Triage Pipeline",
+        summary: "FastAPI & Redis/RQ pipeline that classifies sentiment, auto-dispatches high-confidence responses, and broadcasts HMAC-signed webhooks.",
+        tokens: ["FASTAPI", "PYTHON 3.12", "REDIS", "RQ", "DOCKER"],
         problem: "Customer support engineering teams face crushing queues of unclassified tickets, resulting in sluggish resolution times, human triage inconsistencies, delayed critical incident escalations, and disconnected internal tooling.",
         solution: "Engineered an asynchronous support ticket triage engine using FastAPI, Redis/RQ queues, and Groq LLMs that auto-classifies sentiment and priority, auto-responds to high-confidence tickets, and broadcasts HMAC-signed payloads across downstream webhooks.",
         performance: "Sub-second asynchronous ticket ingestion • 70% manual triage reduction via auto-response • 100% HMAC SHA-256 webhook delivery integrity • 65 automated passing tests.",
@@ -69,6 +93,10 @@ const projects = {
     pawfect: {
         title: "PawfectMatch",
         badge: "LIVE PRODUCTION PLATFORM",
+        monogram: "PM",
+        subtitle: "Interactive Pet Adoption Lifecycle Platform",
+        summary: "Cinematic adoption showcases, dynamic temperament filtering, shelter management, and automated 7-day post-adoption check-ins.",
+        tokens: ["LARAVEL", "PHP 8.2", "MYSQL", "TAILWIND", "ALPINE.JS"],
         problem: "Animal rescue shelters operate on fragmented paperwork, phone records, and unstructured social media inboxes, resulting in slow adoption vetting, high animal surrender rates, and zero systematic post-adoption welfare monitoring.",
         solution: "Engineered an end-to-end pet adoption lifecycle platform using Laravel MVC, MySQL, Tailwind CSS, and Alpine.js, featuring cinematic video showcases, dynamic temperament filtering, role-based shelter management, and automated 7-day post-adoption check-in email dispatchers.",
         performance: "100% automated 7-day post-adoption check-in dispatch • 0 lost adoption applications • Sub-100ms multi-attribute filter response • Zero paper record dependency.",
@@ -78,8 +106,12 @@ const projects = {
         live: "https://pawfect-match-1gqf.onrender.com/"
     },
     kinetic: {
-        title: "STXIC.CL (Kinetic Portfolio)",
-        badge: "KINETIC MOTION & AI CONCIERGE",
+        title: "STXIC.CL",
+        badge: "KINETIC MOTION & AI",
+        monogram: "KC",
+        subtitle: "Kinetic Motion Portfolio & Real-time AI Concierge",
+        summary: "Awwwards-inspired portfolio with physics-based cursor dynamics, SVG morphing shaders, /admin CMS, and context-grounded AI concierge.",
+        tokens: ["LARAVEL 11", "GSAP 3", "LENIS", "GROQ AI", "TAILWIND"],
         problem: "Developer portfolios are dominated by generic, cookie-cutter SaaS templates that fail to convey creative frontend engineering, bespoke motion choreography, real-time AI capabilities, or robust backend architecture.",
         solution: "Architected an Awwwards-inspired kinetic web portfolio and AI Concierge powered by Laravel 11, GSAP 3, and Lenis, featuring physics-based magnetic cursor dynamics, living SVG morphing shaders, an authenticated /admin CMS, and a context-grounded Groq AI assistant with offline fallback.",
         performance: "Locked 60fps Lenis inertial scroll physics • Sub-second Groq AI concierge responses • 0 cumulative layout shift (CLS 0.0) • Multi-stage Docker zero-downtime deployment.",
@@ -255,3 +287,432 @@ if (chartImg) {
     };
     imgLoader.src = liveUrl;
 }
+
+// ==========================================================================
+// 3D BATEMAN BUSINESS CARD DECK ENGINE (SWIPE, WHEEL, SOUND & 3D FLIP)
+// ==========================================================================
+(function initBatemanDeck() {
+    const stage = document.getElementById('batemanDeckStage');
+    const carousel = document.getElementById('batemanCardCarousel');
+    const counterBadge = document.getElementById('deckCounterBadge');
+    const prevBtn = document.getElementById('deckStepPrev');
+    const nextBtn = document.getElementById('deckStepNext');
+    const audioBtn = document.getElementById('deckAudioBtn');
+    const btnModeDeck = document.getElementById('btnModeDeck');
+    const btnModeClassic = document.getElementById('btnModeClassic');
+    const classicSplit = document.getElementById('projectsClassicSplit');
+
+    if (!stage || !carousel) return;
+
+    const projectKeys = Object.keys(projects);
+    const totalCards = projectKeys.length;
+    let activeIndex = 0;
+    let fxEnabled = true;
+    let audioCtx = null;
+
+    // View Mode Switcher (Deck vs Classic Split Fallback)
+    function setViewMode(mode) {
+        if (mode === 'classic') {
+            if (stage) stage.style.display = 'none';
+            if (classicSplit) classicSplit.style.display = 'grid';
+            if (btnModeDeck) btnModeDeck.classList.remove('active');
+            if (btnModeClassic) btnModeClassic.classList.add('active');
+            localStorage.setItem('stxic_proj_view_mode', 'classic');
+        } else {
+            if (stage) stage.style.display = 'flex';
+            if (classicSplit) classicSplit.style.display = 'none';
+            if (btnModeDeck) btnModeDeck.classList.add('active');
+            if (btnModeClassic) btnModeClassic.classList.remove('active');
+            localStorage.setItem('stxic_proj_view_mode', 'deck');
+            updateCarousel(false);
+        }
+    }
+
+    if (btnModeDeck) {
+        btnModeDeck.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setViewMode('deck');
+        });
+    }
+
+    if (btnModeClassic) {
+        btnModeClassic.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setViewMode('classic');
+        });
+    }
+
+    // Restore user preference
+    const savedMode = localStorage.getItem('stxic_proj_view_mode');
+    if (savedMode === 'classic') {
+        setViewMode('classic');
+    }
+
+    // Audio Synthesizer (Zero-latency Web Audio API paper shuffle / snap)
+    function playCardSnapSound() {
+        if (!fxEnabled) return;
+        try {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const duration = 0.045;
+            const bufferSize = Math.floor(audioCtx.sampleRate * duration);
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const channel = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                const decay = Math.exp(-i / (audioCtx.sampleRate * 0.012));
+                channel[i] = (Math.random() * 2 - 1) * decay;
+            }
+
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(2200, audioCtx.currentTime);
+            filter.Q.setValueAtTime(2.5, audioCtx.currentTime);
+
+            const gain = audioCtx.createGain();
+            gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+            noise.start();
+        } catch (err) {
+            // Audio context policy safe
+        }
+    }
+
+    if (audioBtn) {
+        audioBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fxEnabled = !fxEnabled;
+            audioBtn.classList.toggle('active', fxEnabled);
+            const label = audioBtn.querySelector('.audio-label');
+            if (label) label.textContent = fxEnabled ? 'FX' : 'OFF';
+            if (fxEnabled) playCardSnapSound();
+        });
+    }
+
+    // Build the 8 cards
+    carousel.innerHTML = '';
+    const cardElements = [];
+
+    projectKeys.forEach((key, index) => {
+        const item = projects[key];
+        const card = document.createElement('article');
+        card.className = 'bateman-project-card';
+        card.setAttribute('data-id', key);
+        card.setAttribute('data-index', index);
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `${item.title} Executive Specimen Card`);
+
+        const formattedIndex = String(index + 1).padStart(2, '0');
+        const tokenPills = (item.tokens || item.stack.split('/')).map(t =>
+            `<span class="card-stack-pill">${t.trim()}</span>`
+        ).slice(0, 5).join('');
+
+        card.innerHTML = `
+            <div class="bateman-card-inner">
+                <!-- FRONT FACE: THE EXECUTIVE BONE CARD -->
+                <div class="card-face-front">
+                    <div class="card-stock-watermark" aria-hidden="true">STXIC</div>
+                    
+                    <div class="card-top-meta">
+                        <span class="card-specimen-id letterpress">SPECIMEN // ${formattedIndex}</span>
+                        <span class="card-division-badge">${item.badge || 'PRODUCTION SYSTEM'}</span>
+                    </div>
+
+                    <div class="card-core-identity">
+                        <div class="card-emblem-seal" aria-hidden="true">
+                            <span class="card-seal-text">${item.monogram || 'ST'}</span>
+                        </div>
+                        <h3 class="card-proj-title letterpress">${item.title}</h3>
+                        <p class="card-proj-sub">${item.subtitle || item.title}</p>
+                        <p class="card-proj-summary">${item.summary || item.problem}</p>
+                        
+                        <div class="card-stack-tokens" aria-label="Core Technology Specifications">
+                            ${tokenPills}
+                        </div>
+                    </div>
+
+                    <div class="card-action-row">
+                        <button type="button" class="card-btn-inspect" data-action="flip" aria-label="Flip card to inspect technical specifications">
+                            <span>Inspect Specimen</span>
+                            <span aria-hidden="true">&olarr;</span>
+                        </button>
+                        ${item.repo ? `
+                            <a href="${item.repo}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="View Source Repository" aria-label="View Source Repository">
+                                &rarr;
+                            </a>
+                        ` : ''}
+                        ${item.live ? `
+                            <a href="${item.live}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="Launch Live Production System" aria-label="Launch Live Production System">
+                                &nearr;
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+
+                <!-- REVERSE FACE: SPECIMEN TECHNICAL DOSSIER -->
+                <div class="card-face-back">
+                    <div class="back-top-meta">
+                        <span class="back-archive-title letterpress">SPECIMEN // ${formattedIndex} &bull; DOSSIER</span>
+                        <button type="button" class="back-btn-flip-return" data-action="flip-return" aria-label="Return to card front face">
+                            &circlearrowleft; FRONT
+                        </button>
+                    </div>
+
+                    <div class="back-specs-body">
+                        <div class="back-spec-block">
+                            <span class="back-spec-label">THE PROBLEM</span>
+                            <p class="back-spec-copy">${item.problem}</p>
+                        </div>
+                        <div class="back-spec-block">
+                            <span class="back-spec-label">THE ARCHITECTURE</span>
+                            <p class="back-spec-copy">${item.solution}</p>
+                        </div>
+                        <div class="back-spec-block">
+                            <span class="back-spec-label">BENCHMARKS</span>
+                            <p class="back-spec-perf">${item.performance || 'Verified 100% test integrity & zero telemetry.'}</p>
+                        </div>
+                    </div>
+
+                    <div class="back-links-row">
+                        ${item.repo ? `
+                            <a href="${item.repo}" class="back-action-cta primary-cta" target="_blank" rel="noopener noreferrer">
+                                Access Repository &rarr;
+                            </a>
+                        ` : ''}
+                        ${item.live ? `
+                            <a href="${item.live}" class="back-action-cta secondary-cta" target="_blank" rel="noopener noreferrer">
+                                Launch System &nearr;
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        carousel.appendChild(card);
+        cardElements.push(card);
+    });
+
+    // Update Deck Layout Geometry
+    function updateCarousel(playSound = true) {
+        if (playSound) playCardSnapSound();
+
+        const isMobile = window.innerWidth <= 768;
+        const xOffset = isMobile ? 110 : 240;
+        const xOffsetFar = isMobile ? 200 : 420;
+
+        cardElements.forEach((card, index) => {
+            const diff = index - activeIndex;
+
+            // Always un-flip non-center cards
+            if (diff !== 0) {
+                card.classList.remove('is-flipped');
+            }
+
+            if (diff === 0) {
+                // Center hero card
+                card.style.transform = `translateX(0px) translateY(0px) translateZ(${isMobile ? '50px' : '100px'}) scale(1.0) rotateY(0deg) rotateZ(0deg)`;
+                card.style.opacity = '1';
+                card.style.zIndex = '10';
+                card.classList.add('is-center');
+                card.setAttribute('aria-hidden', 'false');
+            } else if (diff === -1) {
+                // Immediate left card
+                card.style.transform = `translateX(-${xOffset}px) translateY(14px) translateZ(${isMobile ? '10px' : '30px'}) scale(${isMobile ? 0.86 : 0.88}) rotateY(12deg) rotateZ(-3deg)`;
+                card.style.opacity = isMobile ? '0.5' : '0.75';
+                card.style.zIndex = '8';
+                card.classList.remove('is-center');
+                card.setAttribute('aria-hidden', 'true');
+            } else if (diff === 1) {
+                // Immediate right card
+                card.style.transform = `translateX(${xOffset}px) translateY(14px) translateZ(${isMobile ? '10px' : '30px'}) scale(${isMobile ? 0.86 : 0.88}) rotateY(-12deg) rotateZ(3deg)`;
+                card.style.opacity = isMobile ? '0.5' : '0.75';
+                card.style.zIndex = '8';
+                card.classList.remove('is-center');
+                card.setAttribute('aria-hidden', 'true');
+            } else if (diff === -2) {
+                // Far left card
+                card.style.transform = `translateX(-${xOffsetFar}px) translateY(28px) translateZ(-50px) scale(${isMobile ? 0.72 : 0.76}) rotateY(20deg) rotateZ(-6deg)`;
+                card.style.opacity = isMobile ? '0' : '0.35';
+                card.style.zIndex = '5';
+                card.classList.remove('is-center');
+                card.setAttribute('aria-hidden', 'true');
+            } else if (diff === 2) {
+                // Far right card
+                card.style.transform = `translateX(${xOffsetFar}px) translateY(28px) translateZ(-50px) scale(${isMobile ? 0.72 : 0.76}) rotateY(-20deg) rotateZ(6deg)`;
+                card.style.opacity = isMobile ? '0' : '0.35';
+                card.style.zIndex = '5';
+                card.classList.remove('is-center');
+                card.setAttribute('aria-hidden', 'true');
+            } else {
+                // Hidden beyond view
+                const dir = diff > 0 ? 1 : -1;
+                card.style.transform = `translateX(${dir * (xOffsetFar + 180)}px) translateY(40px) translateZ(-120px) scale(0.6)`;
+                card.style.opacity = '0';
+                card.style.zIndex = '1';
+                card.classList.remove('is-center');
+                card.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        if (counterBadge) {
+            counterBadge.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(totalCards).padStart(2, '0')}`;
+        }
+
+        // Keep classic split directory in sync
+        const activeKey = projectKeys[activeIndex];
+        projectItems.forEach(i => {
+            i.classList.toggle('selected', i.getAttribute('data-id') === activeKey);
+        });
+        if (typeof renderProject === 'function') {
+            renderProject(activeKey);
+        }
+    }
+
+    function goToCard(idx, playSound = true) {
+        if (idx < 0) idx = 0;
+        if (idx >= totalCards) idx = totalCards - 1;
+        if (idx === activeIndex) return;
+        activeIndex = idx;
+        updateCarousel(playSound);
+    }
+
+    function nextCard() {
+        if (activeIndex < totalCards - 1) {
+            goToCard(activeIndex + 1);
+        } else {
+            goToCard(0);
+        }
+    }
+
+    function prevCard() {
+        if (activeIndex > 0) {
+            goToCard(activeIndex - 1);
+        } else {
+            goToCard(totalCards - 1);
+        }
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevCard(); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextCard(); });
+
+    // Card Click & Flip Handling
+    cardElements.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            // If click was on an external link, allow normal navigation
+            if (e.target.closest('a')) return;
+
+            // If card is not in center, clicking it brings it to center
+            if (index !== activeIndex) {
+                e.stopPropagation();
+                goToCard(index);
+                return;
+            }
+
+            // If card IS in center:
+            // Check if inspect button or flip return was clicked
+            const flipBtn = e.target.closest('[data-action="flip"]');
+            const returnBtn = e.target.closest('[data-action="flip-return"]');
+            if (flipBtn || returnBtn) {
+                e.stopPropagation();
+                card.classList.toggle('is-flipped');
+                playCardSnapSound();
+                return;
+            }
+        });
+    });
+
+    // Touch & Pointer Drag Gestures
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let dragThreshold = 45;
+
+    stage.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        isDragging = true;
+        startX = e.clientX;
+        currentX = e.clientX;
+        try { stage.setPointerCapture(e.pointerId); } catch(err) {}
+    });
+
+    stage.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX;
+    });
+
+    stage.addEventListener('pointerup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        try { stage.releasePointerCapture(e.pointerId); } catch(err) {}
+
+        const delta = currentX - startX;
+        if (Math.abs(delta) > dragThreshold) {
+            if (delta < 0) {
+                nextCard();
+            } else {
+                prevCard();
+            }
+        }
+    });
+
+    stage.addEventListener('pointercancel', () => {
+        isDragging = false;
+    });
+
+    // Mouse Wheel / Trackpad Scroll Navigation
+    let wheelDebounceTimer = null;
+    stage.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (wheelDebounceTimer) return;
+
+        const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (Math.abs(delta) > 16) {
+            if (delta > 0) {
+                nextCard();
+            } else {
+                prevCard();
+            }
+            wheelDebounceTimer = setTimeout(() => {
+                wheelDebounceTimer = null;
+            }, 260);
+        }
+    }, { passive: false });
+
+    // Keyboard Navigation
+    window.addEventListener('keydown', (e) => {
+        const paneProjects = document.getElementById('pane-projects');
+        if (!paneProjects || !paneProjects.classList.contains('active')) return;
+        if (stage.style.display === 'none') return;
+
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextCard();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevCard();
+        } else if (e.key === ' ' || e.key === 'Enter') {
+            const activeCard = cardElements[activeIndex];
+            if (activeCard && !e.target.closest('input, textarea, button, a')) {
+                e.preventDefault();
+                activeCard.classList.toggle('is-flipped');
+                playCardSnapSound();
+            }
+        }
+    });
+
+    // Window Resize Handler
+    window.addEventListener('resize', () => {
+        updateCarousel(false);
+    });
+
+    // Initial Deck Render
+    updateCarousel(false);
+})();
