@@ -342,12 +342,6 @@ if (chartImg) {
         });
     }
 
-    // Restore user preference
-    const savedMode = localStorage.getItem('stxic_proj_view_mode');
-    if (savedMode === 'classic') {
-        setViewMode('classic');
-    }
-
     // Audio Synthesizer (Zero-latency Web Audio API paper shuffle / snap)
     function playCardSnapSound() {
         if (!fxEnabled) return;
@@ -391,7 +385,7 @@ if (chartImg) {
             fxEnabled = !fxEnabled;
             audioBtn.classList.toggle('active', fxEnabled);
             const label = audioBtn.querySelector('.audio-label');
-            if (label) label.textContent = fxEnabled ? 'FX' : 'OFF';
+            if (label) label.textContent = fxEnabled ? 'FX: ON' : 'FX: OFF';
             if (fxEnabled) playCardSnapSound();
         });
     }
@@ -416,43 +410,48 @@ if (chartImg) {
 
         card.innerHTML = `
             <div class="bateman-card-inner">
-                <!-- FRONT FACE: THE EXECUTIVE BONE CARD -->
+                <!-- FRONT FACE: THE EXECUTIVE BONE CARD WITH UPPER LANDSCAPE PHOTO -->
                 <div class="card-face-front">
-                    <div class="card-stock-watermark" aria-hidden="true">STXIC</div>
-                    
-                    <div class="card-top-meta">
-                        <span class="card-specimen-id letterpress">SPECIMEN // ${formattedIndex}</span>
-                        <span class="card-division-badge">${item.badge || 'PRODUCTION SYSTEM'}</span>
+                    <!-- UPPER PART: RECTANGULAR LANDSCAPE PHOTO -->
+                    <div class="card-photo-hero">
+                        <img src="${item.img}" alt="${item.title} Specimen Visual" class="card-hero-img" loading="lazy" />
+                        <div class="card-photo-overlay"></div>
+                        <div class="card-photo-meta">
+                            <span class="card-specimen-id-badge">SPECIMEN // ${formattedIndex}</span>
+                            <span class="card-division-badge">${item.badge || 'PRODUCTION SYSTEM'}</span>
+                        </div>
                     </div>
 
-                    <div class="card-core-identity">
-                        <div class="card-emblem-seal" aria-hidden="true">
-                            <span class="card-seal-text">${item.monogram || 'ST'}</span>
-                        </div>
-                        <h3 class="card-proj-title letterpress">${item.title}</h3>
-                        <p class="card-proj-sub">${item.subtitle || item.title}</p>
-                        <p class="card-proj-summary">${item.summary || item.problem}</p>
+                    <!-- LOWER PART: BONE CARDSTOCK WITH LETTERPRESS IDENTITY -->
+                    <div class="card-body-content">
+                        <div class="card-stock-watermark" aria-hidden="true">STXIC</div>
                         
+                        <div class="card-identity-group">
+                            <h3 class="card-proj-title letterpress">${item.title}</h3>
+                            <p class="card-proj-sub">${item.subtitle || item.title}</p>
+                            <p class="card-proj-summary">${item.summary || item.problem}</p>
+                        </div>
+
                         <div class="card-stack-tokens" aria-label="Core Technology Specifications">
                             ${tokenPills}
                         </div>
-                    </div>
 
-                    <div class="card-action-row">
-                        <button type="button" class="card-btn-inspect" data-action="flip" aria-label="Flip card to inspect technical specifications">
-                            <span>Inspect Specimen</span>
-                            <span aria-hidden="true">&olarr;</span>
-                        </button>
-                        ${item.repo ? `
-                            <a href="${item.repo}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="View Source Repository" aria-label="View Source Repository">
-                                &rarr;
-                            </a>
-                        ` : ''}
-                        ${item.live ? `
-                            <a href="${item.live}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="Launch Live Production System" aria-label="Launch Live Production System">
-                                &nearr;
-                            </a>
-                        ` : ''}
+                        <div class="card-action-row">
+                            <button type="button" class="card-btn-inspect" data-action="flip" aria-label="Flip card to inspect technical specifications">
+                                <span>Inspect Specimen</span>
+                                <span aria-hidden="true">&olarr;</span>
+                            </button>
+                            ${item.repo ? `
+                                <a href="${item.repo}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="View Source Repository" aria-label="View Source Repository">
+                                    &rarr;
+                                </a>
+                            ` : ''}
+                            ${item.live ? `
+                                <a href="${item.live}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="Launch Live Production System" aria-label="Launch Live Production System">
+                                    &nearr;
+                                </a>
+                            ` : ''}
+                        </div>
                     </div>
                 </div>
 
@@ -713,6 +712,7 @@ if (chartImg) {
         updateCarousel(false);
     });
 
-    // Initial Deck Render
+    // Initial Deck Render (Default to 3D Deck)
+    setViewMode('deck');
     updateCarousel(false);
 })();

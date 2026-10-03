@@ -952,9 +952,76 @@ body {
         inset 0 0 0 2px rgba(25, 24, 23, 0.06);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.card-face-back {
     justify-content: space-between;
     padding: clamp(0.9rem, 1.6vh, 1.35rem) clamp(1rem, 1.6vw, 1.4rem);
+}
+
+.card-face-front {
+    padding: 0;
+    justify-content: flex-start;
+}
+
+/* UPPER PART: RECTANGULAR LANDSCAPE PHOTO */
+.card-photo-hero {
+    width: 100%;
+    height: clamp(140px, 22.5vh, 185px);
+    position: relative;
     overflow: hidden;
+    background: #191817;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--rule-heavy);
+}
+
+.card-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: contrast(1.08) brightness(0.92);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.bateman-project-card.is-center:hover .card-hero-img {
+    transform: scale(1.04);
+    filter: contrast(1.12) brightness(1.0);
+}
+
+.card-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 13, 12, 0.72) 0%, rgba(14, 13, 12, 0.08) 45%, rgba(14, 13, 12, 0.55) 100%);
+    pointer-events: none;
+}
+
+.card-photo-meta {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.card-specimen-id-badge {
+    font-family: var(--font-mono);
+    font-size: clamp(0.5rem, 0.58vw, 0.6rem);
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: #f8f6f0;
+    background: rgba(25, 24, 23, 0.78);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* Translucent Papermill Watermark */
@@ -964,7 +1031,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%) rotate(-16deg);
     font-family: var(--font-display);
-    font-size: clamp(3.8rem, 6.5vw, 5.2rem);
+    font-size: clamp(3.2rem, 5.5vw, 4.4rem);
     font-weight: 700;
     color: rgba(25, 24, 23, 0.038);
     pointer-events: none;
@@ -976,107 +1043,58 @@ body {
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.65), -1px -1px 0 rgba(0, 0, 0, 0.02);
 }
 
-/* Front Face Elements */
-.card-top-meta {
-    position: relative;
-    z-index: 1;
+/* LOWER PART: CARD BODY CONTENT */
+.card-body-content {
+    flex: 1;
+    min-height: 0;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 0.4rem;
+    padding: clamp(0.6rem, 1.2vh, 0.9rem) clamp(0.85rem, 1.4vw, 1.2rem);
+    position: relative;
+    overflow: hidden;
 }
 
-.card-specimen-id {
-    font-family: var(--font-mono);
-    font-size: clamp(0.52rem, 0.6vw, 0.62rem);
-    letter-spacing: 0.14em;
-    font-weight: 600;
-    color: var(--ink-muted);
-}
-
-.card-division-badge {
-    font-family: var(--font-mono);
-    font-size: clamp(0.48rem, 0.55vw, 0.56rem);
-    letter-spacing: 0.08em;
-    font-weight: 600;
-    text-transform: uppercase;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 2px 6px;
-    border-radius: 2px;
-}
-
-.card-core-identity {
+.card-identity-group {
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: auto 0;
-    gap: 0.35rem;
-}
-
-/* Intaglio Corporate Seal (Monogram) */
-.card-emblem-seal {
-    width: clamp(44px, 4.2vw, 56px);
-    height: clamp(44px, 4.2vw, 56px);
-    border-radius: 50%;
-    border: 2px solid var(--ink);
-    padding: 2px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ebe6dc;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
-    transition: transform 0.3s ease;
-}
-
-.card-emblem-seal::before {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: 50%;
-    border: 1px dashed var(--rule-heavy);
-}
-
-.card-seal-text {
-    font-family: var(--font-display);
-    font-size: clamp(0.95rem, 1.1vw, 1.15rem);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--ink);
+    gap: 0.15rem;
 }
 
 .card-proj-title {
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 1.35vw, 1.45rem);
+    font-size: clamp(1.08rem, 1.28vw, 1.38rem);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink);
     line-height: 1.15;
-    margin-top: 0.15rem;
 }
 
 .card-proj-sub {
     font-family: var(--font-body);
     font-style: italic;
-    font-size: clamp(0.74rem, 0.82vw, 0.85rem);
+    font-size: clamp(0.72rem, 0.78vw, 0.82rem);
     color: var(--ink-muted);
-    letter-spacing: 0.02em;
-    max-width: 90%;
+    letter-spacing: 0.01em;
+    max-width: 95%;
 }
 
 .card-proj-summary {
     font-family: var(--font-body);
-    font-size: clamp(0.78rem, 0.86vw, 0.88rem);
-    line-height: 1.35;
+    font-size: clamp(0.75rem, 0.8vw, 0.85rem);
+    line-height: 1.32;
     color: #383531;
-    max-width: 95%;
-    margin-top: 0.2rem;
+    max-width: 98%;
+    margin-top: 0.12rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* Monochromatic Debossed Tech Stack Tokens */
