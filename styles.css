@@ -982,13 +982,13 @@ body {
     object-fit: cover;
     object-position: center;
     display: block;
-    filter: contrast(1.08) brightness(0.92);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    filter: none;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bateman-project-card.is-center:hover .card-hero-img {
     transform: scale(1.04);
-    filter: contrast(1.12) brightness(1.0);
+    filter: none;
 }
 
 .card-photo-overlay {
@@ -1452,13 +1452,14 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(90%);
-    transition: filter 0.3s;
+    filter: none;
+    transition: transform 0.3s ease;
     display: block;
 }
 
 .proj-preview-box img:hover {
-    filter: grayscale(0%);
+    filter: none;
+    transform: scale(1.02);
 }
 
 .proj-detail-copy {
@@ -2268,10 +2269,12 @@ body {
 
     /* TAB 1: PROJECTS (Fitted 1-page with inner scrollable detail) */
     .projects-split {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        gap: 0.45rem;
+        display: flex !important;
+        flex-direction: column !important;
+        flex: 1 1 0;
+        min-height: 0;
+        height: 100% !important;
+        gap: 0.5rem;
         width: 100%;
         overflow: hidden;
     }
@@ -2280,12 +2283,12 @@ body {
         flex-shrink: 0;
         display: flex;
         flex-direction: row;
-        gap: 0.35rem;
+        gap: 0.4rem;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        padding: 0.1rem 0 0.3rem 0;
+        padding: 0.15rem 0 0.4rem 0;
         border-right: none;
-        border-bottom: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule-heavy);
         scrollbar-width: none;
     }
 
@@ -2296,10 +2299,10 @@ body {
     .project-card-item {
         scroll-snap-align: start;
         flex-shrink: 0;
-        padding: 0.38rem 0.6rem;
+        padding: 0.4rem 0.75rem;
         background: var(--paper);
         border: 1px solid var(--rule);
-        border-radius: 2px;
+        border-radius: 4px;
         transition: all 0.15s ease;
         cursor: pointer;
     }
@@ -2332,27 +2335,30 @@ body {
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
-        padding: 0.75rem;
+        padding: 0.85rem;
         background: var(--paper);
         border: 1px solid var(--rule);
+        border-radius: 4px;
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
     }
 
     .proj-preview-box {
         width: 100%;
-        height: 140px;
+        height: clamp(140px, 22vh, 185px);
         border: 1px solid var(--rule-heavy);
         background: #e8e4db;
+        border-radius: 4px;
+        overflow: hidden;
         flex-shrink: 0;
     }
 
     .proj-preview-box img {
-        filter: grayscale(35%) contrast(1.05);
-        transition: filter 0.3s ease;
+        filter: none;
+        transition: transform 0.3s ease;
     }
 
     .proj-preview-box img:active {
-        filter: grayscale(0%) contrast(1);
+        filter: none;
     }
 
     .proj-header-row {

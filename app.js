@@ -314,7 +314,7 @@ if (chartImg) {
     function setViewMode(mode) {
         if (mode === 'classic') {
             if (stage) stage.style.display = 'none';
-            if (classicSplit) classicSplit.style.display = 'grid';
+            if (classicSplit) classicSplit.style.display = window.innerWidth <= 900 ? 'flex' : 'grid';
             if (btnModeDeck) btnModeDeck.classList.remove('active');
             if (btnModeClassic) btnModeClassic.classList.add('active');
             localStorage.setItem('stxic_proj_view_mode', 'classic');
@@ -709,6 +709,9 @@ if (chartImg) {
 
     // Window Resize Handler
     window.addEventListener('resize', () => {
+        if (classicSplit && classicSplit.style.display !== 'none' && classicSplit.style.display !== '') {
+            classicSplit.style.display = window.innerWidth <= 900 ? 'flex' : 'grid';
+        }
         updateCarousel(false);
     });
 
