@@ -70,6 +70,11 @@
                         <span class="sep">&bull;</span>
                         <a href="https://linkedin.com/in/christian-lascuna" target="_blank"
                             rel="noopener noreferrer">linkedin.com/in/christian-lascuna</a>
+                        <span class="sep">&bull;</span>
+                        <button type="button" class="card-audio-toggle haptic-audio-toggle active" id="frontAudioToggle"
+                            title="Toggle Tactile Sound Effects" aria-label="Toggle Tactile Sound Effects">
+                            <span class="audio-mark">[ FX: ON ]</span>
+                        </button>
                     </div>
                 </footer>
             </section>
@@ -221,7 +226,7 @@
 
                                     <!-- Deck Navigation & Audio FX Controls -->
                                     <div class="deck-nav-controls" id="deckNavControls">
-                                        <button type="button" class="deck-audio-btn active" id="deckAudioBtn" title="Toggle Card Snap Audio" aria-label="Toggle Card Audio">
+                                        <button type="button" class="deck-audio-btn haptic-audio-toggle active" id="deckAudioBtn" title="Toggle Tactile Sound Effects" aria-label="Toggle Tactile Sound Effects">
                                             <span class="audio-label">FX: ON</span>
                                         </button>
                                         <div class="deck-stepper">
@@ -624,11 +629,18 @@
                             </div>
                         </div>
                     </div>
-                    <button class="return-btn" id="returnTrigger" aria-label="Return to front card"
-                        title="Return to Front">
-                        <span class="return-arrow">&larr;</span>
-                        <span class="return-text">CARD</span>
-                    </button>
+                    <div class="dossier-footer-controls">
+                        <button type="button" class="dossier-audio-toggle haptic-audio-toggle active" id="dossierAudioToggle"
+                            title="Toggle Tactile Sound Effects" aria-label="Toggle Tactile Sound Effects">
+                            <span class="audio-mark">[ FX: ON ]</span>
+                        </button>
+                        <span class="footer-ctrl-sep">&bull;</span>
+                        <button class="return-btn" id="returnTrigger" aria-label="Return to front card"
+                            title="Return to Front">
+                            <span class="return-arrow">&larr;</span>
+                            <span class="return-text">CARD</span>
+                        </button>
+                    </div>
                 </footer>
 
             </section>

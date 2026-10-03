@@ -122,6 +122,205 @@ const projects = {
     }
 };
 
+// ==========================================================================
+// TACTILE SOUND ENGINE (Zero-Latency Web Audio API)
+// Obsessively engineered acoustic textures for luxury physical stationery
+// ==========================================================================
+const SoundEngine = (function () {
+    let audioCtx = null;
+    let fxEnabled = localStorage.getItem('stxic_haptics_enabled') !== 'false'; // default true
+
+    function getAudioContext() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        return audioCtx;
+    }
+
+    // 1. Heavy Cotton Paper Flip (Main 3D Turn: Front to Dossier & Return)
+    // Acoustic model: 32pt heavy cotton card moving through air with low-mid swoosh & subtle desk settle
+    function playPaperFlip() {
+        if (!fxEnabled) return;
+        try {
+            const ctx = getAudioContext();
+            const now = ctx.currentTime;
+            const duration = 0.13;
+
+            // Air swoosh (shaped bandpass white noise)
+            const bufferSize = Math.floor(ctx.sampleRate * duration);
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                const decay = Math.exp(-i / (ctx.sampleRate * 0.038));
+                data[i] = (Math.random() * 2 - 1) * decay;
+            }
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(650, now);
+            filter.frequency.exponentialRampToValueAtTime(1300, now + duration);
+            filter.Q.setValueAtTime(1.6, now);
+
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.22, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            noise.start(now);
+
+            // Low paper impact / desk settle
+            const osc = ctx.createOscillator();
+            const oscGain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(90, now + 0.02);
+            osc.frequency.exponentialRampToValueAtTime(38, now + 0.08);
+            oscGain.gain.setValueAtTime(0.12, now + 0.02);
+            oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+            osc.connect(oscGain);
+            oscGain.connect(ctx.destination);
+            osc.start(now + 0.02);
+            osc.stop(now + 0.09);
+        } catch (e) {
+            // Audio context policy safe
+        }
+    }
+
+    // 2. Crisp Card Snap (Project Carousel & Deck Shuffle)
+    // Acoustic model: 2200Hz bandpass card snap
+    function playCardSnap() {
+        if (!fxEnabled) return;
+        try {
+            const ctx = getAudioContext();
+            const now = ctx.currentTime;
+            const duration = 0.045;
+            const bufferSize = Math.floor(ctx.sampleRate * duration);
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const channel = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                const decay = Math.exp(-i / (ctx.sampleRate * 0.012));
+                channel[i] = (Math.random() * 2 - 1) * decay;
+            }
+
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(2200, now);
+            filter.Q.setValueAtTime(2.5, now);
+
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            noise.start(now);
+        } catch (e) {
+            // Audio context policy safe
+        }
+    }
+
+    // 3. Micro Intaglio Tick (Tabs, Mode Switchers, Contact Copy, Steppers)
+    // Acoustic model: Ultra-fast 18ms mechanical micro-tick, feels like a fingernail tap on raised ink
+    function playMicroTick() {
+        if (!fxEnabled) return;
+        try {
+            const ctx = getAudioContext();
+            const now = ctx.currentTime;
+            const duration = 0.02;
+            const bufferSize = Math.floor(ctx.sampleRate * duration);
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const channel = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                const decay = Math.exp(-i / (ctx.sampleRate * 0.004));
+                channel[i] = (Math.random() * 2 - 1) * decay;
+            }
+
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(1600, now);
+            filter.Q.setValueAtTime(3.2, now);
+
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            noise.start(now);
+        } catch (e) {
+            // Audio context policy safe
+        }
+    }
+
+    function isEnabled() {
+        return fxEnabled;
+    }
+
+    function toggle() {
+        fxEnabled = !fxEnabled;
+        localStorage.setItem('stxic_haptics_enabled', fxEnabled);
+        syncToggles();
+        if (fxEnabled) {
+            playMicroTick();
+        }
+        return fxEnabled;
+    }
+
+    function syncToggles() {
+        const toggles = document.querySelectorAll('.haptic-audio-toggle, #frontAudioToggle, #dossierAudioToggle, #deckAudioBtn');
+        toggles.forEach(btn => {
+            btn.classList.toggle('active', fxEnabled);
+            btn.setAttribute('aria-pressed', fxEnabled ? 'true' : 'false');
+
+            const mark = btn.querySelector('.audio-mark');
+            if (mark) {
+                mark.textContent = fxEnabled ? '[ FX: ON ]' : '[ FX: OFF ]';
+            }
+
+            const label = btn.querySelector('.audio-label');
+            if (label) {
+                label.textContent = fxEnabled ? 'FX: ON' : 'FX: OFF';
+            }
+        });
+    }
+
+    function initToggles() {
+        const toggles = document.querySelectorAll('.haptic-audio-toggle, #frontAudioToggle, #dossierAudioToggle, #deckAudioBtn');
+        toggles.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggle();
+            });
+        });
+        syncToggles();
+    }
+
+    return {
+        playPaperFlip,
+        playCardSnap,
+        playMicroTick,
+        isEnabled,
+        toggle,
+        syncToggles,
+        initToggles
+    };
+})();
+
 // DOM References
 const deck = document.getElementById('deck');
 const frontFace = document.querySelector('.front-face');
@@ -134,8 +333,11 @@ if (frontFace && deck) {
     frontFace.addEventListener('click', (e) => {
         // Never flip if deck is already flipped
         if (deck.classList.contains('flipped')) return;
-        // Prevent flip if clicking external links
+        // Prevent flip if clicking external links or audio toggle
         if (e.target.closest('a')) return;
+        if (e.target.closest('#frontAudioToggle') || e.target.closest('.card-audio-toggle')) return;
+
+        SoundEngine.playPaperFlip();
         deck.classList.add('flipped');
         if (backFace) {
             backFace.scrollTop = 0;
@@ -149,6 +351,7 @@ if (flipTrigger) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             if (deck) {
+                SoundEngine.playPaperFlip();
                 deck.classList.add('flipped');
                 if (backFace) backFace.scrollTop = 0;
             }
@@ -159,7 +362,10 @@ if (flipTrigger) {
 returnTriggers.forEach(trigger => {
     trigger.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (deck) deck.classList.remove('flipped');
+        if (deck) {
+            SoundEngine.playPaperFlip();
+            deck.classList.remove('flipped');
+        }
     });
 });
 
@@ -171,6 +377,8 @@ tabBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+
+        SoundEngine.playMicroTick();
 
         tabBtns.forEach(b => b.classList.remove('active'));
         tabPanes.forEach(p => p.classList.remove('active'));
@@ -263,6 +471,7 @@ function renderProject(id) {
 
 projectItems.forEach(item => {
     item.addEventListener('click', () => {
+        SoundEngine.playMicroTick();
         projectItems.forEach(i => i.classList.remove('selected'));
         item.classList.add('selected');
         renderProject(item.getAttribute('data-id'));
@@ -307,8 +516,6 @@ if (chartImg) {
     const projectKeys = Object.keys(projects);
     const totalCards = projectKeys.length;
     let activeIndex = 0;
-    let fxEnabled = true;
-    let audioCtx = null;
 
     // View Mode Switcher (Deck vs Classic Split Fallback)
     function setViewMode(mode) {
@@ -343,6 +550,7 @@ if (chartImg) {
     if (btnModeDeck) {
         btnModeDeck.addEventListener('click', (e) => {
             e.stopPropagation();
+            SoundEngine.playMicroTick();
             setViewMode('deck');
         });
     }
@@ -350,55 +558,8 @@ if (chartImg) {
     if (btnModeClassic) {
         btnModeClassic.addEventListener('click', (e) => {
             e.stopPropagation();
+            SoundEngine.playMicroTick();
             setViewMode('classic');
-        });
-    }
-
-    // Audio Synthesizer (Zero-latency Web Audio API paper shuffle / snap)
-    function playCardSnapSound() {
-        if (!fxEnabled) return;
-        try {
-            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-
-            const duration = 0.045;
-            const bufferSize = Math.floor(audioCtx.sampleRate * duration);
-            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-            const channel = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                const decay = Math.exp(-i / (audioCtx.sampleRate * 0.012));
-                channel[i] = (Math.random() * 2 - 1) * decay;
-            }
-
-            const noise = audioCtx.createBufferSource();
-            noise.buffer = buffer;
-
-            const filter = audioCtx.createBiquadFilter();
-            filter.type = 'bandpass';
-            filter.frequency.setValueAtTime(2200, audioCtx.currentTime);
-            filter.Q.setValueAtTime(2.5, audioCtx.currentTime);
-
-            const gain = audioCtx.createGain();
-            gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-            noise.connect(filter);
-            filter.connect(gain);
-            gain.connect(audioCtx.destination);
-            noise.start();
-        } catch (err) {
-            // Audio context policy safe
-        }
-    }
-
-    if (audioBtn) {
-        audioBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            fxEnabled = !fxEnabled;
-            audioBtn.classList.toggle('active', fxEnabled);
-            const label = audioBtn.querySelector('.audio-label');
-            if (label) label.textContent = fxEnabled ? 'FX: ON' : 'FX: OFF';
-            if (fxEnabled) playCardSnapSound();
         });
     }
 
@@ -513,7 +674,7 @@ if (chartImg) {
 
     // Update Deck Layout Geometry
     function updateCarousel(playSound = true) {
-        if (playSound) playCardSnapSound();
+        if (playSound) SoundEngine.playCardSnap();
 
         const isMobile = window.innerWidth <= 768;
         const xOffset = isMobile ? 110 : 260;
@@ -637,7 +798,7 @@ if (chartImg) {
             if (flipBtn || returnBtn) {
                 e.stopPropagation();
                 card.classList.toggle('is-flipped');
-                playCardSnapSound();
+                SoundEngine.playCardSnap();
                 return;
             }
         });
@@ -717,7 +878,7 @@ if (chartImg) {
             if (activeCard && !e.target.closest('input, textarea, button, a')) {
                 e.preventDefault();
                 activeCard.classList.toggle('is-flipped');
-                playCardSnapSound();
+                SoundEngine.playCardSnap();
             }
         }
     });
@@ -742,6 +903,7 @@ if (chartImg) {
     if (btnCopyEmail && copyEmailText) {
         btnCopyEmail.addEventListener('click', (e) => {
             e.stopPropagation();
+            SoundEngine.playMicroTick();
             const email = 'c.lascuna556171@gmail.com';
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(email).then(() => {
@@ -763,3 +925,6 @@ if (chartImg) {
         });
     }
 })();
+
+// Initialize Global Tactile Sound Engine Toggles
+SoundEngine.initToggles();
