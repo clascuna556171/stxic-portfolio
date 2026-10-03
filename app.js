@@ -313,14 +313,26 @@ if (chartImg) {
     // View Mode Switcher (Deck vs Classic Split Fallback)
     function setViewMode(mode) {
         if (mode === 'classic') {
-            if (stage) stage.style.display = 'none';
-            if (classicSplit) classicSplit.style.display = window.innerWidth <= 900 ? 'flex' : 'grid';
+            if (stage) {
+                stage.classList.add('view-hidden');
+                stage.style.display = 'none';
+            }
+            if (classicSplit) {
+                classicSplit.classList.remove('view-hidden');
+                classicSplit.style.display = window.innerWidth <= 900 ? 'flex' : 'grid';
+            }
             if (btnModeDeck) btnModeDeck.classList.remove('active');
             if (btnModeClassic) btnModeClassic.classList.add('active');
             localStorage.setItem('stxic_proj_view_mode', 'classic');
         } else {
-            if (stage) stage.style.display = 'flex';
-            if (classicSplit) classicSplit.style.display = 'none';
+            if (stage) {
+                stage.classList.remove('view-hidden');
+                stage.style.display = 'flex';
+            }
+            if (classicSplit) {
+                classicSplit.classList.add('view-hidden');
+                classicSplit.style.display = 'none';
+            }
             if (btnModeDeck) btnModeDeck.classList.add('active');
             if (btnModeClassic) btnModeClassic.classList.remove('active');
             localStorage.setItem('stxic_proj_view_mode', 'deck');
@@ -709,7 +721,7 @@ if (chartImg) {
 
     // Window Resize Handler
     window.addEventListener('resize', () => {
-        if (classicSplit && classicSplit.style.display !== 'none' && classicSplit.style.display !== '') {
+        if (classicSplit && !classicSplit.classList.contains('view-hidden') && classicSplit.style.display !== 'none' && classicSplit.style.display !== '') {
             classicSplit.style.display = window.innerWidth <= 900 ? 'flex' : 'grid';
         }
         updateCarousel(false);

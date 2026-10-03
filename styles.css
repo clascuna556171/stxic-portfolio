@@ -690,6 +690,11 @@ body {
     color: var(--ink-faint);
 }
 
+/* View Mode Hidden State */
+.view-hidden {
+    display: none !important;
+}
+
 /* =========================================
    TAB 1: PROJECTS (CONTAINER & DECK CONTROLS)
    ========================================= */
@@ -2268,7 +2273,7 @@ body {
     }
 
     /* TAB 1: PROJECTS (Fitted 1-page with inner scrollable detail) */
-    .projects-split {
+    .projects-split:not(.view-hidden) {
         display: flex !important;
         flex-direction: column !important;
         flex: 1 1 0;
