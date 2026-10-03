@@ -100,6 +100,8 @@ const backFace = document.querySelector('.back-face');
 // Flip Controls (Tap Anywhere on Front Card to Flip)
 if (frontFace && deck) {
     frontFace.addEventListener('click', (e) => {
+        // Never flip if deck is already flipped
+        if (deck.classList.contains('flipped')) return;
         // Prevent flip if clicking external links
         if (e.target.closest('a')) return;
         deck.classList.add('flipped');
@@ -134,7 +136,10 @@ const tabBtns = document.querySelectorAll('.tab-btn');
 const tabPanes = document.querySelectorAll('.tab-pane');
 
 tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
         tabBtns.forEach(b => b.classList.remove('active'));
         tabPanes.forEach(p => p.classList.remove('active'));
 
@@ -147,11 +152,44 @@ tabBtns.forEach(btn => {
 
         // On mobile, smoothly reset scroll position to top of dossier
         if (backFace && window.innerWidth <= 768) {
-            const headerHeight = document.querySelector('.dossier-header')?.offsetHeight || 80;
             backFace.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
 });
+
+// Briefing Action Buttons (Direct Deep-Links to Other Dossier Tabs)
+const briefingToProjects = document.getElementById('briefingToProjects');
+const briefingToCerts = document.getElementById('briefingToCerts');
+const briefingToExp = document.getElementById('briefingToExp');
+const briefingToContact = document.getElementById('briefingToContact');
+
+if (briefingToProjects) {
+    briefingToProjects.addEventListener('click', () => {
+        const tabBtn = document.getElementById('tabBtnProjects');
+        if (tabBtn) tabBtn.click();
+    });
+}
+
+if (briefingToCerts) {
+    briefingToCerts.addEventListener('click', () => {
+        const tabBtn = document.getElementById('tabBtnCerts');
+        if (tabBtn) tabBtn.click();
+    });
+}
+
+if (briefingToExp) {
+    briefingToExp.addEventListener('click', () => {
+        const tabBtn = document.getElementById('tabBtnExp');
+        if (tabBtn) tabBtn.click();
+    });
+}
+
+if (briefingToContact) {
+    briefingToContact.addEventListener('click', () => {
+        const tabBtn = document.getElementById('tabBtnContact');
+        if (tabBtn) tabBtn.click();
+    });
+}
 
 // Project Directory Item Selection & Details Render
 const projectItems = document.querySelectorAll('.project-card-item');
@@ -206,3 +244,14 @@ projectItems.forEach(item => {
 
 // Initial Render
 renderProject('roninclips');
+
+// Live Refresh for GitHub Contribution Graph (with zero layout shift)
+const chartImg = document.querySelector('.github-chart-svg');
+if (chartImg) {
+    const liveUrl = 'https://ghchart.rshah.org/191817/clascuna556171';
+    const imgLoader = new Image();
+    imgLoader.onload = () => {
+        chartImg.src = liveUrl;
+    };
+    imgLoader.src = liveUrl;
+}

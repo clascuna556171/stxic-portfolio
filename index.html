@@ -15,6 +15,10 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23191817'/><text x='16' y='21' font-family='serif' font-weight='bold' font-size='15' fill='%23f8f6f0' text-anchor='middle'>S</text></svg>">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -31,8 +35,8 @@
 
                 <header class="top-meta-row">
                     <div class="direct-contact-block">
-                        <span class="direct-phone letterpress">+63 907 749 4027 STXIC</span>
-                        <a href="mailto:clascuna556171@gmail.com"
+                        <span class="direct-phone letterpress">+63 907 749 4027</span>
+                        <a href="mailto:c.lascuna556171@gmail.com"
                             class="direct-email letterpress">c.lascuna556171@gmail.com</a>
                     </div>
                     <div class="firm-block">
@@ -49,8 +53,8 @@
                         <div class="card-turn-prompt letterpress" id="flipTrigger" role="button" tabindex="0"
                             aria-label="Turn card over to view executive dossier" title="Turn card over">
                             <svg class="prompt-glyph" viewBox="0 0 24 24" width="22" height="22" fill="none"
-                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                stroke-linejoin="round" aria-hidden="true">
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
                                 <path d="M21 12a9 9 0 1 1-2.64-6.36L21 8" />
                                 <polyline points="21 3 21 8 16 8" />
                             </svg>
@@ -97,7 +101,11 @@
                             <span class="return-arrow">&larr;</span>
                             <span class="return-label">CARD</span>
                         </button>
-                        <button class="tab-btn active" data-tab="projects" id="tabBtnProjects">
+                        <button class="tab-btn active" data-tab="briefing" id="tabBtnBriefing">
+                            <span class="tab-text-full">Executive Brief</span>
+                            <span class="tab-text-compact">Brief</span>
+                        </button>
+                        <button class="tab-btn" data-tab="projects" id="tabBtnProjects">
                             <span class="tab-text-full">Projects</span>
                             <span class="tab-text-compact">Projects</span>
                         </button>
@@ -120,9 +128,79 @@
                 <div class="dossier-viewport">
 
                     <!-- =========================================
+                         DEFAULT TAB: EDITORIAL INDEX (STOIC DOSSIER)
+                         ========================================= -->
+                    <div class="tab-pane active" id="pane-briefing" role="tabpanel">
+                        <div class="editorial-index-wrap">
+                            <header class="editorial-head">
+                                <span class="editorial-eyebrow letterpress">EXECUTIVE DOSSIER // ARCHIVAL DIRECTORY</span>
+                                <p class="editorial-statement">
+                                    Full-stack systems engineer and QA mentor specializing in offline AI inference pipelines, serialized inventory infrastructure, and zero-telemetry software architecture.
+                                </p>
+                            </header>
+
+                            <!-- Monochromatic GitHub Audit Strip -->
+                            <section class="github-audit-strip" aria-label="GitHub System Audit Log">
+                                <div class="github-audit-meta">
+                                    <span class="audit-tag">SYSTEM EXECUTION LOG // GITHUB: @clascuna556171</span>
+                                    <span class="audit-cycle">ACTIVE AUDIT CYCLE &bull; 2025&ndash;2026</span>
+                                </div>
+                                <div class="github-chart-frame">
+                                    <img src="images/github-contributions.svg" alt="Christian Lascuna GitHub Commit Matrix" class="github-chart-svg" loading="eager" />
+                                </div>
+                            </section>
+
+                            <div class="editorial-rule" aria-hidden="true"></div>
+
+                            <nav class="editorial-directory" aria-label="Executive Section Directory">
+                                <button type="button" class="editorial-row" id="briefingToProjects">
+                                    <span class="row-index">01</span>
+                                    <div class="row-meta">
+                                        <span class="row-heading">Technical Case Studies</span>
+                                        <span class="row-sub">Offline AI Engines &bull; High-Concurrency POS &bull; Local Pipelines (8 Systems)</span>
+                                    </div>
+                                    <span class="row-action">&rarr;</span>
+                                </button>
+                                <button type="button" class="editorial-row" id="briefingToCerts">
+                                    <span class="row-index">02</span>
+                                    <div class="row-meta">
+                                        <span class="row-heading">Archival Credentials</span>
+                                        <span class="row-sub">Pearson VUE / Certiport (HTML/CSS, Databases, Java) &bull; Verified Credly</span>
+                                    </div>
+                                    <span class="row-action">&rarr;</span>
+                                </button>
+                                <button type="button" class="editorial-row" id="briefingToExp">
+                                    <span class="row-index">03</span>
+                                    <div class="row-meta">
+                                        <span class="row-heading">Experience &amp; Appointments</span>
+                                        <span class="row-sub">QA Mentor &bull; UM Skills Clinic, University of Mindanao (2026 &mdash; Present)</span>
+                                    </div>
+                                    <span class="row-action">&rarr;</span>
+                                </button>
+                                <button type="button" class="editorial-row" id="briefingToContact">
+                                    <span class="row-index">04</span>
+                                    <div class="row-meta">
+                                        <span class="row-heading">Direct Operational Line</span>
+                                        <span class="row-sub">c.lascuna556171@gmail.com &bull; Davao City, Philippines (UTC+8)</span>
+                                    </div>
+                                    <span class="row-action">&nearr;</span>
+                                </button>
+                            </nav>
+
+                            <footer class="editorial-foot">
+                                <span class="foot-item">STXIC LABS</span>
+                                <span class="foot-sep">&bull;</span>
+                                <span class="foot-item">UNIVERSITY OF MINDANAO</span>
+                                <span class="foot-sep">&bull;</span>
+                                <span class="foot-item">HIGH HONOR ACADEMIC SCHOLAR</span>
+                            </footer>
+                        </div>
+                    </div>
+
+                    <!-- =========================================
                          TAB 1: PROJECTS (SPLIT DIRECTORY WITH IMAGE)
                          ========================================= -->
-                    <div class="tab-pane active" id="pane-projects" role="tabpanel">
+                    <div class="tab-pane" id="pane-projects" role="tabpanel">
                         <div class="projects-split">
                             <ul class="project-index" id="projectIndexList">
                                 <li class="project-card-item selected" data-id="roninclips">
@@ -189,7 +267,9 @@
                                         </div>
                                         <div class="spec-block">
                                             <span class="spec-label">PERFORMANCE:</span>
-                                            <p id="detailPerformance" class="spec-text">Sub-3s transcription latency &bull; 0 cloud egress fees &bull; 100% local data residency &bull; 5x&ndash;10x faster export via CUDA h264_nvenc.</p>
+                                            <p id="detailPerformance" class="spec-text">Sub-3s transcription latency
+                                                &bull; 0 cloud egress fees &bull; 100% local data residency &bull;
+                                                5x&ndash;10x faster export via CUDA h264_nvenc.</p>
                                         </div>
                                     </div>
 
