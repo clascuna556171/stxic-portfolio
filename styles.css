@@ -833,33 +833,11 @@ body {
     line-height: 1;
 }
 
-/* Deck Stepper & Audio Controls */
+/* Deck Stepper Navigation Controls */
 .deck-nav-controls {
     display: flex;
     align-items: center;
     gap: 0.45rem;
-}
-
-.deck-audio-btn {
-    background: transparent;
-    border: 1px solid var(--rule);
-    border-radius: 3px;
-    padding: 2px 7px;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    cursor: pointer;
-    color: var(--ink-faint);
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    transition: all 0.15s ease;
-}
-
-.deck-audio-btn.active {
-    color: var(--ink);
-    border-color: var(--ink);
-    font-weight: 600;
-    background: rgba(25, 24, 23, 0.04);
 }
 
 .deck-stepper {

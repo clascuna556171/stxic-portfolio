@@ -282,7 +282,7 @@ const SoundEngine = (function () {
     }
 
     function syncToggles() {
-        const toggles = document.querySelectorAll('.haptic-audio-toggle, #frontAudioToggle, #dossierAudioToggle, #deckAudioBtn');
+        const toggles = document.querySelectorAll('.haptic-audio-toggle, #frontAudioToggle, #dossierAudioToggle');
         toggles.forEach(btn => {
             btn.classList.toggle('active', fxEnabled);
             btn.setAttribute('aria-pressed', fxEnabled ? 'true' : 'false');
@@ -291,16 +291,11 @@ const SoundEngine = (function () {
             if (mark) {
                 mark.textContent = fxEnabled ? '[ FX: ON ]' : '[ FX: OFF ]';
             }
-
-            const label = btn.querySelector('.audio-label');
-            if (label) {
-                label.textContent = fxEnabled ? 'FX: ON' : 'FX: OFF';
-            }
         });
     }
 
     function initToggles() {
-        const toggles = document.querySelectorAll('.haptic-audio-toggle, #frontAudioToggle, #dossierAudioToggle, #deckAudioBtn');
+        const toggles = document.querySelectorAll('.haptic-audio-toggle, #frontAudioToggle, #dossierAudioToggle');
         toggles.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -506,7 +501,6 @@ if (chartImg) {
     const counterBadge = document.getElementById('deckCounterBadge');
     const prevBtn = document.getElementById('deckStepPrev');
     const nextBtn = document.getElementById('deckStepNext');
-    const audioBtn = document.getElementById('deckAudioBtn');
     const btnModeDeck = document.getElementById('btnModeDeck');
     const btnModeClassic = document.getElementById('btnModeClassic');
     const classicSplit = document.getElementById('projectsClassicSplit');
