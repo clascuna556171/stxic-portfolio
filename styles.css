@@ -2219,21 +2219,40 @@ body {
 
     .github-audit-strip {
         gap: 0.25rem;
+        width: 100%;
     }
 
     .github-audit-meta {
-        font-size: 0.58rem;
+        font-size: clamp(0.5rem, 2.2vw, 0.58rem);
         letter-spacing: 0.08em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 0.35rem;
     }
 
     .github-chart-frame {
-        justify-content: flex-start;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .github-chart-frame::-webkit-scrollbar {
+        display: none;
     }
 
     .github-chart-svg {
-        min-width: 580px;
-        max-height: 65px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        max-height: clamp(48px, 8vh, 65px);
     }
 
     .editorial-row {
@@ -2741,6 +2760,10 @@ body {
     .card-turn-prompt .prompt-glyph {
         width: 18px;
         height: 18px;
+    }
+
+    .audit-tag-prefix {
+        display: none;
     }
 
     .proj-preview-box {
