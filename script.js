@@ -11,7 +11,7 @@ const projects = {
         solution: "Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, and FFmpeg to auto-extract viral highlights, render animated karaoke subtitles, and auto-crop faces locally.",
         performance: "Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.",
         stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
-        img: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=85",
+        img: "images/roninclips_mockup.jpg",
         repo: "https://github.com/clascuna556171/roninclips",
         live: null
     },
@@ -26,7 +26,7 @@ const projects = {
         solution: "Architected an intentional friction mobile engine using Flutter and Groq LPU (llama-3.3-70b-versatile) that enforces 24–72h dopamine cooling vault locks, computes physical labor-hour costs, projects S&P 500 compound opportunity loss, and delivers sub-second AI reality checks with smart budget dupes.",
         performance: "<850ms Groq LPU inference latency • 74%+ impulse cancellation rate • 100% offline fallback resilience • 111 passing test suites.",
         stack: "FLUTTER / DART / FIREBASE / GROQ LPU / LLAMA-3.3-70B / PROVIDER",
-        img: "images/worthit.png",
+        img: "images/worthi_mockup.jpg",
         repo: "https://github.com/clascuna556171/worthit",
         live: null
     },
@@ -101,7 +101,7 @@ const projects = {
         solution: "Engineered an end-to-end pet adoption lifecycle platform using Laravel MVC, MySQL, Tailwind CSS, and Alpine.js, featuring cinematic video showcases, dynamic temperament filtering, role-based shelter management, and automated 7-day post-adoption check-in email dispatchers.",
         performance: "100% automated 7-day post-adoption check-in dispatch • 0 lost adoption applications • Sub-100ms multi-attribute filter response • Zero paper record dependency.",
         stack: "LARAVEL / PHP 8.2 / MYSQL / BLADE / TAILWIND CSS / ALPINE.JS / DOCKER / VITE",
-        img: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=85",
+        img: "images/pawfectmatch_mockup.jpg",
         repo: "https://github.com/clascuna556171/pawfect-match",
         live: "https://pawfect-match-1gqf.onrender.com/"
     },
