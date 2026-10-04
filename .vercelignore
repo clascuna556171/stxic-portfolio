@@ -1,0 +1,15 @@
+# Development server
+server.js
+
+# Internal context and case studies (prevents leaking local system paths)
+projects.md
+ProjectContext.md
+project_case_Study.md
+*.md
+Details_From_my_old_portfolio.mc
+samplelookbutchangable.html
+
+# Local caches
+.git
+.github
+*.log

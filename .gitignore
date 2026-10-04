@@ -1,3 +1,13 @@
 node_modules/
 .DS_Store
 Thumbs.db
+.vercel
+.env
+.env*.local
+*.log
+
+# Project documentation & notes
+projects.md
+project_case_Study.md
+ProjectContext.md
+Details_From_my_old_portfolio.mc
