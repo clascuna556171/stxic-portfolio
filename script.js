@@ -513,6 +513,8 @@ if (chartImg) {
     const totalCards = projectKeys.length;
     let activeIndex = 0;
 
+    const deckNavControls = document.getElementById('deckNavControls');
+
     // View Mode Switcher (Deck vs Classic Split Fallback)
     function setViewMode(mode) {
         if (mode === 'classic') {
@@ -524,6 +526,7 @@ if (chartImg) {
                 classicSplit.classList.remove('view-hidden');
                 classicSplit.style.display = window.innerWidth <= 900 ? 'flex' : 'grid';
             }
+            if (deckNavControls) deckNavControls.style.display = 'none';
             if (btnModeDeck) btnModeDeck.classList.remove('active');
             if (btnModeClassic) btnModeClassic.classList.add('active');
             localStorage.setItem('stxic_proj_view_mode', 'classic');
@@ -536,6 +539,7 @@ if (chartImg) {
                 classicSplit.classList.add('view-hidden');
                 classicSplit.style.display = 'none';
             }
+            if (deckNavControls) deckNavControls.style.display = 'flex';
             if (btnModeDeck) btnModeDeck.classList.add('active');
             if (btnModeClassic) btnModeClassic.classList.remove('active');
             localStorage.setItem('stxic_proj_view_mode', 'deck');
