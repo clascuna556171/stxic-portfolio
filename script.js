@@ -16,7 +16,7 @@ const projects = {
         live: null
     },
     worthit: {
-        title: "WorthIt",
+        title: "Worthi",
         badge: "NEUROECONOMIC ENGINE",
         monogram: "WI",
         subtitle: "Behavioral Friction & Impulse Shield App",
@@ -118,7 +118,7 @@ const projects = {
         stack: "LARAVEL 11 / PHP 8.3 / GSAP 3 / LENIS / GROQ AI / TAILWIND CSS / DOCKER / MYSQL",
         img: "images/stxic_cl_mockup.jpg",
         repo: "https://github.com/clascuna556171/fullstack-portfolio",
-        live: null
+        live: "https://christianlascuna.me"
     }
 };
 
@@ -450,8 +450,10 @@ function renderProject(id) {
     if (detailProblem) detailProblem.textContent = data.problem;
     if (detailSolution) detailSolution.textContent = data.solution;
     if (detailPerformance) detailPerformance.textContent = data.performance || '';
-    if (detailStack) detailStack.textContent = `TECH SPEC: ${data.stack}`;
-    if (detailImg) detailImg.src = data.img;
+    if (detailImg) {
+        detailImg.src = data.img;
+        detailImg.setAttribute('data-id', id);
+    }
     if (detailRepoLink) detailRepoLink.href = data.repo;
 
     if (detailLiveLink) {
@@ -890,35 +892,23 @@ if (chartImg) {
     updateCarousel(false);
 })();
 
-// Direct Line Email Copy Handler
-(function initDirectLineCopy() {
-    const btnCopyEmail = document.getElementById('btnCopyEmail');
-    const copyEmailText = document.getElementById('copyEmailText');
-    if (btnCopyEmail && copyEmailText) {
-        btnCopyEmail.addEventListener('click', (e) => {
-            e.stopPropagation();
-            SoundEngine.playMicroTick();
-            const email = 'c.lascuna556171@gmail.com';
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(email).then(() => {
-                    const originalText = copyEmailText.textContent;
-                    copyEmailText.textContent = 'COPIED TO CLIPBOARD ✓';
-                    btnCopyEmail.style.borderColor = 'var(--ink)';
-                    btnCopyEmail.style.background = 'rgba(25, 24, 23, 0.08)';
-                    setTimeout(() => {
-                        copyEmailText.textContent = originalText;
-                        btnCopyEmail.style.borderColor = '';
-                        btnCopyEmail.style.background = '';
-                    }, 2200);
-                }).catch(() => {
-                    window.location.href = `mailto:${email}`;
-                });
-            } else {
-                window.location.href = `mailto:${email}`;
-            }
+// Download CV & Direct Dispatch Audio Feedback
+(function initContactActions() {
+    const btnDownloadCV = document.getElementById('btnDownloadCV');
+    if (btnDownloadCV) {
+        btnDownloadCV.addEventListener('click', () => {
+            SoundEngine.playPaperFlip();
         });
     }
+
+    // Direct mailto & telephone audio feedback
+    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            SoundEngine.playMicroTick();
+        });
+    });
 })();
+
 
 // Initialize Global Tactile Sound Engine Toggles
 SoundEngine.initToggles();
