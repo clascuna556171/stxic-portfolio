@@ -1,3 +1,13 @@
+// Browser environment guard (prevents SSR/Serverless runner crashes if evaluated in Node)
+if (typeof window === 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = (req, res) => {
+            if (res) { res.writeHead(200, { 'Content-Type': 'text/plain' }); res.end('Client Script'); }
+        };
+    }
+    return;
+}
+
 // Project Dataset with Problem, Solution, Tech Stack, Image, and Links
 const projects = {
     roninclips: {
