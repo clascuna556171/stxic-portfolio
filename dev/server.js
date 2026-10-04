@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3456;
+const ROOT_DIR = path.join(__dirname, '..');
 const MIME_TYPES = {
     '.html': 'text/html',
     '.css': 'text/css',
@@ -14,7 +15,8 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-    let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+    let cleanPath = req.url.split('?')[0];
+    let filePath = path.join(ROOT_DIR, cleanPath === '/' ? 'index.html' : cleanPath);
     const ext = path.extname(filePath);
     const contentType = MIME_TYPES[ext] || 'text/plain';
 

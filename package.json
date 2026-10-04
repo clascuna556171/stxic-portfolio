@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Portfolio Website",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
+    "dev": "node dev/server.js",
+    "start": "node dev/server.js",
     "build": "echo 'Static deployment ready'"
   },
   "keywords": [],

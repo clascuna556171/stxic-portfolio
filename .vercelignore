@@ -1,4 +1,5 @@
 # Development server
+dev/
 server.js
 
 # Internal context and case studies (prevents leaking local system paths)
