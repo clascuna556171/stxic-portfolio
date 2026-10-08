@@ -28,7 +28,7 @@ const projects = {
         stack: "FLUTTER / DART / FIREBASE / GROQ LPU / LLAMA-3.3-70B / PROVIDER",
         img: "images/worthi_mockup.jpg",
         repo: "https://github.com/clascuna556171/worthit",
-        live: null
+        live: "https://worthi-ten.vercel.app/"
     },
     shoeboy: {
         title: "The Shoe Boy",
@@ -383,6 +383,10 @@ tabBtns.forEach(btn => {
         const targetPane = document.getElementById(`pane-${target}`);
         if (targetPane) {
             targetPane.classList.add('active');
+            const scrollable = targetPane.querySelector('.editorial-index-wrap, .certs-wrap, .timeline-wrap, .contact-memo-wrap, .project-dossier-view');
+            if (scrollable) {
+                scrollable.scrollTop = 0;
+            }
         }
 
         // On mobile, smoothly reset scroll position to top of dossier
@@ -472,6 +476,11 @@ projectItems.forEach(item => {
         projectItems.forEach(i => i.classList.remove('selected'));
         item.classList.add('selected');
         renderProject(item.getAttribute('data-id'));
+
+        const detailView = document.querySelector('.project-dossier-view');
+        if (detailView) {
+            detailView.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         // Center active project in mobile horizontal selector
         if (window.innerWidth <= 900) {
@@ -806,21 +815,26 @@ if (chartImg) {
 
     // Touch & Pointer Drag Gestures
     let startX = 0;
+    let startY = 0;
     let currentX = 0;
+    let currentY = 0;
     let isDragging = false;
-    let dragThreshold = 45;
+    let dragThreshold = 40;
 
     stage.addEventListener('pointerdown', (e) => {
-        if (e.target.closest('a') || e.target.closest('button')) return;
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.card-face-back')) return;
         isDragging = true;
         startX = e.clientX;
+        startY = e.clientY;
         currentX = e.clientX;
+        currentY = e.clientY;
         try { stage.setPointerCapture(e.pointerId); } catch(err) {}
     });
 
     stage.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
         currentX = e.clientX;
+        currentY = e.clientY;
     });
 
     stage.addEventListener('pointerup', (e) => {
@@ -828,9 +842,11 @@ if (chartImg) {
         isDragging = false;
         try { stage.releasePointerCapture(e.pointerId); } catch(err) {}
 
-        const delta = currentX - startX;
-        if (Math.abs(delta) > dragThreshold) {
-            if (delta < 0) {
+        const deltaX = currentX - startX;
+        const deltaY = currentY - startY;
+        // Only cycle cards if gesture was primarily horizontal
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > dragThreshold) {
+            if (deltaX < 0) {
                 nextCard();
             } else {
                 prevCard();
@@ -845,6 +861,19 @@ if (chartImg) {
     // Mouse Wheel / Trackpad Scroll Navigation
     let wheelDebounceTimer = null;
     stage.addEventListener('wheel', (e) => {
+        // If cursor is over scrollable specs on a flipped card, permit natural vertical scrolling
+        const backSpecs = e.target.closest('.back-specs-body');
+        if (backSpecs) {
+            const isScrollable = backSpecs.scrollHeight > backSpecs.clientHeight;
+            if (isScrollable) {
+                const atTop = backSpecs.scrollTop <= 0 && e.deltaY < 0;
+                const atBottom = backSpecs.scrollTop + backSpecs.clientHeight >= backSpecs.scrollHeight - 1 && e.deltaY > 0;
+                if (!atTop && !atBottom) {
+                    return; // Allow native scroll without hijacking
+                }
+            }
+        }
+
         e.preventDefault();
         if (wheelDebounceTimer) return;
 
@@ -863,6 +892,14 @@ if (chartImg) {
 
     // Keyboard Navigation
     window.addEventListener('keydown', (e) => {
+        // Global Escape key returns to Front Card
+        if (e.key === 'Escape' && deck && deck.classList.contains('flipped')) {
+            e.preventDefault();
+            SoundEngine.playPaperFlip();
+            deck.classList.remove('flipped');
+            return;
+        }
+
         const paneProjects = document.getElementById('pane-projects');
         if (!paneProjects || !paneProjects.classList.contains('active')) return;
         if (stage.style.display === 'none') return;
