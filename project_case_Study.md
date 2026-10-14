@@ -46,7 +46,9 @@ Engineered a 100% offline desktop AI engine combining Faster-Whisper, Groq AI, a
 **PERFORMANCE:**  
 Sub-3s transcription latency • 0 cloud egress fees • 100% local data residency • 5x–10x faster export via CUDA h264_nvenc.
 
-**TECH SPEC: LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG**
+**TECH SPEC: LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG**  
+**LIVE LANDING PAGE: https://roninclips-landing.vercel.app/**  
+**REPOSITORY: https://github.com/clascuna556171/roninclips**
 
 ---
 
@@ -179,7 +181,9 @@ Locked 60fps Lenis inertial scroll physics • Sub-second Groq AI concierge resp
 
 ## Project 1: RoninClips
 *Local AI Video Clipper & Subtitle Engine*  
-**Directory:** `C:\Users\Sebaz\roninclips`
+**Directory:** `C:\Users\Sebaz\roninclips`  
+**Live Landing Page:** `https://roninclips-landing.vercel.app/`  
+**Repository:** `https://github.com/clascuna556171/roninclips`
 
 ### Architecture Overview
 RoninClips is designed as a zero-cloud-cost, privacy-first desktop application combining a Laravel 12 application web server with an isolated Python 3.10+ processing daemon. It bridges modern AI video processing with zero SaaS subscription fees.

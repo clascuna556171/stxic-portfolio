@@ -32,6 +32,7 @@ The project transcends a flat gimmick: it treats software engineering with the s
    - *Description*: Local AI video clipper and subtitle engine. Extracts viral hooks, generates animated captions, and applies face tracking/cropping 100% offline.
    - *Tech Spec*: Laravel, Python, Faster-Whisper, Groq AI, FFmpeg.
    - *Repository*: `https://github.com/clascuna556171/roninclips`
+   - *Live Landing Page*: `https://roninclips-landing.vercel.app/`
 
 2. **PawfectMatch** (Full-Stack Management System)
    - *Description*: Interactive pet adoption platform with glassmorphic UI, natural language chatbot, and comprehensive shelter management ledger.
