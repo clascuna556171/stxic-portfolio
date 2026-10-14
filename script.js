@@ -13,7 +13,7 @@ const projects = {
         stack: "LARAVEL / PYTHON / FASTER-WHISPER / GROQ AI / FFMPEG",
         img: "images/roninclips_mockup.jpg",
         repo: "https://github.com/clascuna556171/roninclips",
-        live: null
+        live: "https://roninclips-landing.vercel.app/"
     },
     worthit: {
         title: "Worthi",
