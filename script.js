@@ -965,12 +965,10 @@ SoundEngine.initToggles();
     // Reuse the ticker and project specifications so new stack entries stay in sync.
     const ticker = trigger.querySelector('.ticker-item');
     const aliases = {
-        'LARAVEL': 'LARAVEL 11',
-        'PYTHON': 'PYTHON 3.12',
         'GROQ': 'GROQ LPU',
         'GROQ AI': 'GROQ LPU',
         'GROQ LLM': 'GROQ LPU',
-        'NEXT.JS': 'NEXT.JS 14',
+        'LLAMA-3.3-70B': 'LLAMA',
         'TAILWIND': 'TAILWIND CSS'
     };
     const entries = [
@@ -980,16 +978,16 @@ SoundEngine.initToggles();
         ...Object.values(projects).flatMap(project => project.stack.split('/'))
     ];
     const stack = new Set(entries.map(entry => {
-        const label = entry.trim().replace(/\s+/g, ' ').toUpperCase();
+        const label = entry.trim().replace(/\s+/g, ' ').toUpperCase().replace(/\s+V?\d+(?:\.\d+)*$/, '');
         return aliases[label] || label;
     }).filter(Boolean));
 
     const categories = [
-        ['Languages & Runtimes', ['PYTHON 3.12', 'JAVA', 'TYPESCRIPT', 'DART', 'PHP 8.2', 'PHP 8.3', 'NODE.JS']],
-        ['Web & Motion', ['NEXT.JS 14', 'REACT 19', 'TAILWIND CSS', 'ALPINE.JS', 'BLADE', 'GSAP 3', 'LENIS', 'VITE']],
+        ['Languages & Runtimes', ['PYTHON', 'JAVA', 'TYPESCRIPT', 'DART', 'PHP', 'NODE.JS']],
+        ['Web & Motion', ['NEXT.JS', 'REACT', 'TAILWIND CSS', 'ALPINE.JS', 'BLADE', 'GSAP', 'LENIS', 'VITE']],
         ['Mobile & App Development', ['FLUTTER', 'PROVIDER', 'CAPACITOR', 'PWA']],
-        ['Backend, Data & Deployment', ['LARAVEL 11', 'FASTAPI', 'MYSQL', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
-        ['AI & Media', ['GROQ LPU', 'FASTER-WHISPER', 'LLAMA-3.3-70B', 'OLLAMA', 'FFMPEG']],
+        ['Backend, Data & Deployment', ['LARAVEL', 'FASTAPI', 'MYSQL', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
+        ['AI & Media', ['GROQ LPU', 'FASTER-WHISPER', 'LLAMA', 'OLLAMA', 'FFMPEG']],
         ['Agent & Developer Tooling', ['CODEX', 'AST PARSING', 'MCP', 'ANTIGRAVITY', 'CURSORRULES', 'OPENAPI', 'CLI']]
     ];
     const categorized = new Set(categories.flatMap(([, labels]) => labels));
