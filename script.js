@@ -119,6 +119,22 @@ const projects = {
         img: "images/stxic_cl_mockup.jpg",
         repo: "https://github.com/clascuna556171/fullstack-portfolio",
         live: "https://christianlascuna.me"
+    },
+    atlas: {
+        title: "Stxic Atlas",
+        badge: "LOCAL-FIRST CODE EXPLORER",
+        monogram: "SA",
+        subtitle: "File Connections & Evidence-Based AI Review",
+        summary: "Maps imports and Git co-change history, previews diffs, and explains changes with optional local AI review backed by inspectable code evidence.",
+        tokens: ["REACT", "TYPESCRIPT", "EXPRESS", "OLLAMA", "SQLITE"],
+        problem: "A diff shows edited lines but leaves developers to trace affected files, shared change history, and review risks manually. AI feedback is difficult to assess when its supporting code and incomplete results are hidden.",
+        solution: "Built a local-first React and Express application that combines import connections with Git co-change evidence, inspectable change previews, and optional Ollama explanations. Deeper review uses five specialist passes and a skeptical final reviewer, validates citations against the diff, and preserves partial results. Optional cloud inference requires a preview and explicit consent; the public site is a synthetic interactive demo.",
+        performance: "Bounded analysis: 400 commits, 140 source files, 28 mapped files • Five specialist passes plus final review • Local SQLite feedback • Source and history analysis works without AI.",
+        stack: "REACT / TYPESCRIPT / NODE.JS / EXPRESS / GIT / OLLAMA / SQLITE / VITE",
+        img: "images/stxic_atlas_mockup.jpg",
+        repo: "https://github.com/clascuna556171/stxic-atlas",
+        live: "https://stxic-atlas.vercel.app/",
+        liveLabel: "Explore Demo"
     }
 };
 
@@ -454,6 +470,7 @@ function renderProject(id) {
     if (detailProblem) detailProblem.textContent = data.problem;
     if (detailSolution) detailSolution.textContent = data.solution;
     if (detailPerformance) detailPerformance.textContent = data.performance || '';
+    if (detailStack) detailStack.textContent = `TECH SPEC: ${data.stack}`;
     if (detailImg) {
         detailImg.src = data.img;
         detailImg.setAttribute('data-id', id);
@@ -463,6 +480,7 @@ function renderProject(id) {
     if (detailLiveLink) {
         if (data.live) {
             detailLiveLink.href = data.live;
+            detailLiveLink.textContent = `${data.liveLabel || 'Launch Production System'} ↗`;
             detailLiveLink.style.display = 'inline';
         } else {
             detailLiveLink.style.display = 'none';
@@ -572,7 +590,7 @@ if (chartImg) {
         });
     }
 
-    // Build the 8 cards
+    // Build a card for each project.
     carousel.innerHTML = '';
     const cardElements = [];
 
@@ -629,7 +647,7 @@ if (chartImg) {
                                 </a>
                             ` : ''}
                             ${item.live ? `
-                                <a href="${item.live}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="Launch Live Production System" aria-label="Launch Live Production System">
+                                <a href="${item.live}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="${item.liveLabel || 'Launch Live Production System'}" aria-label="${item.liveLabel || 'Launch Live Production System'}">
                                     &nearr;
                                 </a>
                             ` : ''}
@@ -669,7 +687,7 @@ if (chartImg) {
                         ` : ''}
                         ${item.live ? `
                             <a href="${item.live}" class="back-action-cta secondary-cta" target="_blank" rel="noopener noreferrer">
-                                Launch System &nearr;
+                                ${item.liveLabel || 'Launch System'} &nearr;
                             </a>
                         ` : ''}
                     </div>
@@ -986,9 +1004,9 @@ SoundEngine.initToggles();
         ['Languages & Runtimes', ['PYTHON', 'JAVA', 'TYPESCRIPT', 'DART', 'PHP', 'NODE.JS']],
         ['Web & Motion', ['NEXT.JS', 'REACT', 'TAILWIND CSS', 'ALPINE.JS', 'BLADE', 'GSAP', 'LENIS', 'VITE']],
         ['Mobile & App Development', ['FLUTTER', 'PROVIDER', 'CAPACITOR', 'PWA']],
-        ['Backend, Data & Deployment', ['LARAVEL', 'FASTAPI', 'MYSQL', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
+        ['Backend, Data & Deployment', ['LARAVEL', 'FASTAPI', 'EXPRESS', 'MYSQL', 'SQLITE', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
         ['AI & Media', ['GROQ LPU', 'FASTER-WHISPER', 'LLAMA', 'OLLAMA', 'FFMPEG']],
-        ['Agent & Developer Tooling', ['CODEX', 'AST PARSING', 'MCP', 'ANTIGRAVITY', 'CURSORRULES', 'OPENAPI', 'CLI']]
+        ['Agent & Developer Tooling', ['CODEX', 'GIT', 'AST PARSING', 'MCP', 'ANTIGRAVITY', 'CURSORRULES', 'OPENAPI', 'CLI']]
     ];
     const categorized = new Set(categories.flatMap(([, labels]) => labels));
     const remaining = [...stack].filter(label => !categorized.has(label));
