@@ -975,6 +975,7 @@ SoundEngine.initToggles();
     };
     const entries = [
         'CODEX',
+        'JAVA',
         ...(ticker ? ticker.textContent.split('•') : []),
         ...Object.values(projects).flatMap(project => project.stack.split('/'))
     ];
@@ -984,7 +985,7 @@ SoundEngine.initToggles();
     }).filter(Boolean));
 
     const categories = [
-        ['Languages & Runtimes', ['PYTHON 3.12', 'TYPESCRIPT', 'DART', 'PHP 8.2', 'PHP 8.3', 'NODE.JS']],
+        ['Languages & Runtimes', ['PYTHON 3.12', 'JAVA', 'TYPESCRIPT', 'DART', 'PHP 8.2', 'PHP 8.3', 'NODE.JS']],
         ['Web & Motion', ['NEXT.JS 14', 'REACT 19', 'TAILWIND CSS', 'ALPINE.JS', 'BLADE', 'GSAP 3', 'LENIS', 'VITE']],
         ['Mobile & App Development', ['FLUTTER', 'PROVIDER', 'CAPACITOR', 'PWA']],
         ['Backend, Data & Deployment', ['LARAVEL 11', 'FASTAPI', 'MYSQL', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
