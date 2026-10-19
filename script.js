@@ -982,10 +982,37 @@ SoundEngine.initToggles();
         return aliases[label] || label;
     }).filter(Boolean));
 
-    stack.forEach(label => {
-        const item = document.createElement('li');
-        item.textContent = label;
-        list.appendChild(item);
+    const categories = [
+        ['Languages & Runtimes', ['PYTHON 3.12', 'TYPESCRIPT', 'DART', 'PHP 8.2', 'PHP 8.3', 'NODE.JS']],
+        ['Web & Motion', ['NEXT.JS 14', 'REACT 19', 'TAILWIND CSS', 'ALPINE.JS', 'BLADE', 'GSAP 3', 'LENIS', 'VITE']],
+        ['Mobile & App Development', ['FLUTTER', 'PROVIDER', 'CAPACITOR', 'PWA']],
+        ['Backend, Data & Deployment', ['LARAVEL 11', 'FASTAPI', 'MYSQL', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
+        ['AI & Media', ['GROQ LPU', 'FASTER-WHISPER', 'LLAMA-3.3-70B', 'OLLAMA', 'FFMPEG']],
+        ['Agent & Developer Tooling', ['AST PARSING', 'MCP', 'ANTIGRAVITY', 'CURSORRULES', 'OPENAPI', 'CLI']]
+    ];
+    const categorized = new Set(categories.flatMap(([, labels]) => labels));
+    const remaining = [...stack].filter(label => !categorized.has(label));
+    if (remaining.length) categories.push(['Other Technologies', remaining]);
+
+    categories.forEach(([title, labels], index) => {
+        const available = labels.filter(label => stack.has(label));
+        if (!available.length) return;
+
+        const section = document.createElement('section');
+        section.className = 'stack-card-category';
+        const heading = document.createElement('h3');
+        heading.id = `stack-category-${index}`;
+        heading.textContent = title;
+        section.setAttribute('aria-labelledby', heading.id);
+        const items = document.createElement('ul');
+        items.className = 'stack-card-list';
+        available.forEach(label => {
+            const item = document.createElement('li');
+            item.textContent = label;
+            items.appendChild(item);
+        });
+        section.append(heading, items);
+        list.appendChild(section);
     });
 
     trigger.addEventListener('click', () => {
