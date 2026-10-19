@@ -974,6 +974,7 @@ SoundEngine.initToggles();
         'TAILWIND': 'TAILWIND CSS'
     };
     const entries = [
+        'CODEX',
         ...(ticker ? ticker.textContent.split('•') : []),
         ...Object.values(projects).flatMap(project => project.stack.split('/'))
     ];
@@ -988,7 +989,7 @@ SoundEngine.initToggles();
         ['Mobile & App Development', ['FLUTTER', 'PROVIDER', 'CAPACITOR', 'PWA']],
         ['Backend, Data & Deployment', ['LARAVEL 11', 'FASTAPI', 'MYSQL', 'REDIS', 'FIREBASE', 'SQLALCHEMY', 'RQ', 'JWT', 'DOMPDF', 'DOCKER']],
         ['AI & Media', ['GROQ LPU', 'FASTER-WHISPER', 'LLAMA-3.3-70B', 'OLLAMA', 'FFMPEG']],
-        ['Agent & Developer Tooling', ['AST PARSING', 'MCP', 'ANTIGRAVITY', 'CURSORRULES', 'OPENAPI', 'CLI']]
+        ['Agent & Developer Tooling', ['CODEX', 'AST PARSING', 'MCP', 'ANTIGRAVITY', 'CURSORRULES', 'OPENAPI', 'CLI']]
     ];
     const categorized = new Set(categories.flatMap(([, labels]) => labels));
     const remaining = [...stack].filter(label => !categorized.has(label));
