@@ -953,3 +953,52 @@ if (chartImg) {
 
 // Initialize Global Tactile Sound Engine Toggles
 SoundEngine.initToggles();
+
+// Expand the moving stack footer into its own business card.
+(function initStackBusinessCard() {
+    const trigger = document.getElementById('stackCardTrigger');
+    const card = document.getElementById('stackBusinessCard');
+    const list = document.getElementById('stackCardList');
+    const returnButton = document.getElementById('stackCardReturn');
+    if (!trigger || !card || !list || !returnButton) return;
+
+    // Reuse the ticker and project specifications so new stack entries stay in sync.
+    const ticker = trigger.querySelector('.ticker-item');
+    const aliases = {
+        'LARAVEL': 'LARAVEL 11',
+        'PYTHON': 'PYTHON 3.12',
+        'GROQ': 'GROQ LPU',
+        'GROQ AI': 'GROQ LPU',
+        'GROQ LLM': 'GROQ LPU',
+        'NEXT.JS': 'NEXT.JS 14',
+        'TAILWIND': 'TAILWIND CSS'
+    };
+    const entries = [
+        ...(ticker ? ticker.textContent.split('•') : []),
+        ...Object.values(projects).flatMap(project => project.stack.split('/'))
+    ];
+    const stack = new Set(entries.map(entry => {
+        const label = entry.trim().replace(/\s+/g, ' ').toUpperCase();
+        return aliases[label] || label;
+    }).filter(Boolean));
+
+    stack.forEach(label => {
+        const item = document.createElement('li');
+        item.textContent = label;
+        list.appendChild(item);
+    });
+
+    trigger.addEventListener('click', () => {
+        card.showModal();
+        trigger.setAttribute('aria-expanded', 'true');
+        SoundEngine.playPaperFlip();
+    });
+    returnButton.addEventListener('click', () => card.close());
+    // Keep the existing global project-deck shortcuts from acting behind the card.
+    card.addEventListener('keydown', event => event.stopPropagation());
+    card.addEventListener('close', () => {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus({ preventScroll: true });
+        SoundEngine.playPaperFlip();
+    });
+})();

@@ -765,10 +765,12 @@
 
                 <!-- Back Footer: Archival Telemetry Ticker -->
                 <footer class="dossier-footer">
-                    <div class="footer-telemetry">
+                    <button type="button" class="footer-telemetry" id="stackCardTrigger"
+                        aria-label="Open full technology stack business card" aria-haspopup="dialog"
+                        aria-controls="stackBusinessCard" aria-expanded="false" title="View full technology stack">
                         <span class="telemetry-tag letterpress">SPEC //</span>
-                        <div class="ticker-viewport">
-                            <div class="ticker-track">
+                        <span class="ticker-viewport">
+                            <span class="ticker-track">
                                 <span class="ticker-item">LARAVEL 11 <span class="t-dot">&bull;</span> PYTHON 3.12 <span
                                         class="t-dot">&bull;</span> GROQ LPU <span class="t-dot">&bull;</span> FASTAPI
                                     <span class="t-dot">&bull;</span> NEXT.JS 14 <span class="t-dot">&bull;</span> REACT
@@ -786,9 +788,9 @@
                                     <span class="t-dot">&bull;</span> GSAP 3 <span class="t-dot">&bull;</span> FFMPEG
                                     <span class="t-dot">&bull;</span> TAILWIND <span
                                         class="t-dot">&bull;&nbsp;</span></span>
-                            </div>
-                        </div>
-                    </div>
+                            </span>
+                        </span>
+                    </button>
                     <div class="dossier-footer-controls">
                         <button type="button" class="dossier-audio-toggle haptic-audio-toggle active" id="dossierAudioToggle"
                             title="Toggle Tactile Sound Effects" aria-label="Toggle Tactile Sound Effects">
@@ -807,6 +809,21 @@
 
         </div>
     </div>
+
+    <dialog class="stack-business-card" id="stackBusinessCard" aria-labelledby="stackCardTitle">
+        <div class="stack-card-content">
+            <header class="stack-card-header">
+                <span class="letterpress">STXIC LABS</span>
+                <button type="button" class="stack-card-return" id="stackCardReturn" autofocus>Return to dossier</button>
+            </header>
+            <div class="stack-card-identity">
+                <h2 class="letterpress" id="stackCardTitle">Technology Stack</h2>
+                <p>Christian Lascuña &bull; Full-Stack Developer &amp; Systems Architect</p>
+            </div>
+            <ul class="stack-card-list" id="stackCardList" aria-label="Complete technology stack"></ul>
+            <footer class="stack-card-footer">STXIC LABS &bull; SYSTEMS &amp; AI ENGINEERING</footer>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>
