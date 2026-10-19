@@ -2258,7 +2258,7 @@ a.direct-phone:active {
 /* Expanded stack: the footer's own cotton-stock business card. */
 .stack-business-card {
     margin: auto;
-    width: min(1040px, calc(100vw - 2rem));
+    width: min(1120px, calc(100vw - 2rem));
     max-height: calc(100dvh - 2rem);
     padding: 0;
     border: 1px solid var(--rule-heavy);
@@ -2279,6 +2279,9 @@ a.direct-phone:active {
 }
 
 .stack-card-content {
+    min-height: min(78dvh, 650px);
+    display: flex;
+    flex-direction: column;
     padding: clamp(1rem, 3vh, 2rem) clamp(1rem, 3vw, 2.5rem);
 }
 
@@ -2329,10 +2332,12 @@ a.direct-phone:active {
 }
 
 .stack-card-categories {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(0.85rem, 2.5vh, 1.5rem) 1.5rem;
     align-items: start;
+    align-content: space-evenly;
 }
 
 .stack-card-category h3 {
@@ -2355,7 +2360,7 @@ a.direct-phone:active {
 .stack-card-list li {
     padding: 0.15rem 0;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.84rem;
     line-height: 1.4;
     overflow-wrap: anywhere;
 }
@@ -2388,7 +2393,7 @@ a.direct-phone:active {
     }
 
     .stack-card-category h3 {
-        font-size: 0.75rem;
+        font-size: 0.82rem;
         padding-bottom: 0.3rem;
     }
 
@@ -2397,7 +2402,7 @@ a.direct-phone:active {
     }
 
     .stack-card-list li {
-        font-size: 0.68rem;
+        font-size: 0.75rem;
     }
 
     .stack-card-identity p {
@@ -2410,8 +2415,23 @@ a.direct-phone:active {
     }
 }
 
+@media (max-width: 480px) and (max-height: 759px) {
+    .stack-card-content {
+        min-height: 0;
+    }
+
+    .stack-card-category h3 {
+        font-size: 0.75rem;
+    }
+
+    .stack-card-list li {
+        font-size: 0.68rem;
+    }
+}
+
 @media (max-height: 600px) {
     .stack-card-content {
+        min-height: 0;
         padding: 0.75rem 1rem;
     }
 
