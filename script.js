@@ -344,9 +344,10 @@ if (frontFace && deck) {
     frontFace.addEventListener('click', (e) => {
         // Never flip if deck is already flipped
         if (deck.classList.contains('flipped')) return;
-        // Prevent flip if clicking external links or audio toggle
+        // Prevent flip if clicking external links, audio toggle, or inspiration trigger
         if (e.target.closest('a')) return;
         if (e.target.closest('#frontAudioToggle') || e.target.closest('.card-audio-toggle')) return;
+        if (e.target.closest('.inspiration-trigger') || e.target.closest('.utility-control-cluster')) return;
 
         SoundEngine.playPaperFlip();
         deck.classList.add('flipped');
@@ -910,6 +911,9 @@ if (chartImg) {
 
     // Keyboard Navigation
     window.addEventListener('keydown', (e) => {
+        const inspirationLayer = document.getElementById('inspirationDossierLayer');
+        if (inspirationLayer && !inspirationLayer.hidden) return;
+
         // Global Escape key returns to Front Card
         if (e.key === 'Escape' && deck && deck.classList.contains('flipped')) {
             e.preventDefault();
@@ -1046,4 +1050,205 @@ SoundEngine.initToggles();
         trigger.focus({ preventScroll: true });
         SoundEngine.playPaperFlip();
     });
+})();
+
+// ==========================================================================
+// THE INSPIRATION DOSSIER (ARCHIVAL REFERENCE FILE / 001)
+// Discreet Easter egg revealing the design reference starting at 02:34 (154s)
+// ==========================================================================
+(function initInspirationDossier() {
+    const EMBED_URL = 'https://www.youtube-nocookie.com/embed/rC0HFwnK_5E?start=154&playsinline=1&rel=0';
+    const layer = document.getElementById('inspirationDossierLayer');
+    const backdrop = document.getElementById('inspirationDossierBackdrop');
+    const dossierCard = document.getElementById('inspirationDossier');
+    const closeBtn = document.getElementById('inspirationCloseBtn');
+    const videoMount = document.getElementById('inspirationVideoMount');
+    const triggers = document.querySelectorAll('.inspiration-trigger');
+
+    if (!layer || !dossierCard || !closeBtn || !videoMount || !triggers.length) return;
+
+    let isOpen = false;
+    let activeTrigger = null;
+    let closeTimer = null;
+
+    function getVisibleTrigger() {
+        const isFlipped = deck && deck.classList.contains('flipped');
+        if (activeTrigger) {
+            const inBack = Boolean(activeTrigger.closest('.back-face'));
+            if (inBack === isFlipped) {
+                return activeTrigger;
+            }
+        }
+        return document.getElementById(isFlipped ? 'dossierInspirationTrigger' : 'frontInspirationTrigger') || triggers[0];
+    }
+
+    function mountVideo() {
+        videoMount.innerHTML = '';
+        const iframe = document.createElement('iframe');
+        iframe.src = EMBED_URL;
+        iframe.title = 'The Inspiration — Executive Dossier Design Reference (starts at 02:34)';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        videoMount.appendChild(iframe);
+    }
+
+    function unmountVideo() {
+        const existingIframe = videoMount.querySelector('iframe');
+        if (existingIframe) {
+            try {
+                existingIframe.src = 'about:blank';
+            } catch (e) {
+                // Safe teardown
+            }
+        }
+        videoMount.innerHTML = '';
+    }
+
+    function positionDossierCard() {
+        dossierCard.setAttribute('aria-modal', 'true');
+    }
+
+    function openDossier(trigger) {
+        if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+        }
+
+        isOpen = true;
+        activeTrigger = trigger || getVisibleTrigger();
+        SoundEngine.playMicroTick();
+
+        layer.hidden = false;
+        layer.setAttribute('aria-hidden', 'false');
+        layer.classList.remove('is-closing');
+
+        mountVideo();
+
+        triggers.forEach(btn => {
+            btn.setAttribute('aria-expanded', 'true');
+            btn.classList.add('is-active');
+        });
+
+        positionDossierCard();
+        // Force layout calculation before applying entrance transition class
+        void dossierCard.offsetWidth;
+        layer.classList.add('is-open');
+
+        requestAnimationFrame(() => {
+            closeBtn.focus({ preventScroll: true });
+        });
+    }
+
+    function closeDossier(restoreFocus = true) {
+        if (!isOpen) return;
+        isOpen = false;
+        SoundEngine.playMicroTick();
+
+        // Immediately stop video playback and remove iframe
+        unmountVideo();
+
+        layer.classList.remove('is-open');
+        layer.classList.add('is-closing');
+
+        triggers.forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
+            btn.classList.remove('is-active');
+        });
+
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const exitDuration = prefersReducedMotion ? 0 : 180;
+
+        if (closeTimer) clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => {
+            layer.hidden = true;
+            layer.setAttribute('aria-hidden', 'true');
+            layer.classList.remove('is-closing');
+            closeTimer = null;
+        }, exitDuration);
+
+        if (restoreFocus) {
+            const targetTrigger = getVisibleTrigger();
+            if (targetTrigger && typeof targetTrigger.focus === 'function') {
+                targetTrigger.focus({ preventScroll: true });
+            }
+        }
+    }
+
+    triggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (isOpen) {
+                closeDossier(true);
+            } else {
+                openDossier(btn);
+            }
+        });
+    });
+
+    closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeDossier(true);
+    });
+
+    if (backdrop) {
+        backdrop.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeDossier(true);
+        });
+    }
+
+    // Keyboard navigation: Escape to close & focus containment inside dialog
+    window.addEventListener('keydown', (e) => {
+        if (!isOpen) return;
+
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            closeDossier(true);
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusable = Array.from(
+                dossierCard.querySelectorAll('button:not([disabled]), a[href], iframe, [tabindex]:not([tabindex="-1"])')
+            );
+            if (!focusable.length) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    }, true);
+
+    window.addEventListener('resize', () => {
+        if (isOpen) {
+            positionDossierCard();
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        if (isOpen) {
+            positionDossierCard();
+        }
+    }, true);
+
+    // Close dossier cleanly if the user opens the Stack Business Card modal
+    const stackTrigger = document.getElementById('stackCardTrigger');
+    if (stackTrigger) {
+        stackTrigger.addEventListener('click', () => {
+            if (isOpen) closeDossier(false);
+        });
+    }
 })();
