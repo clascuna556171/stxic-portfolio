@@ -1894,21 +1894,6 @@ a.direct-phone:active {
     color: var(--ink-muted);
 }
 
-.labs-pulse-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background-color: #10b981;
-    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.22);
-    display: inline-block;
-    animation: labs-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes labs-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-}
-
 .labs-strip-tag {
     font-family: var(--font-mono);
     font-size: 0.72rem;
