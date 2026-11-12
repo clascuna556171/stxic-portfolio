@@ -480,7 +480,7 @@ function renderProject(id) {
     if (detailLiveLink) {
         if (data.live) {
             detailLiveLink.href = data.live;
-            detailLiveLink.textContent = `${data.liveLabel || 'Launch Production System'} ↗`;
+            detailLiveLink.innerHTML = `${data.liveLabel || 'Launch Production System'} <svg class="editorial-arrow-icon" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8"/></svg>`;
             detailLiveLink.style.display = 'inline';
         } else {
             detailLiveLink.style.display = 'none';
@@ -639,16 +639,16 @@ if (chartImg) {
                         <div class="card-action-row">
                             <button type="button" class="card-btn-inspect" data-action="flip" aria-label="Flip card to inspect technical specifications">
                                 <span>Inspect Specimen</span>
-                                <span aria-hidden="true">&olarr;</span>
+                                <span aria-hidden="true"><svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 6a4.5 4.5 0 0 1 7.68-3.18L10.5 4"/><path d="M10.5 1.5v3H7.5"/></svg></span>
                             </button>
                             ${item.repo ? `
                                 <a href="${item.repo}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="View Source Repository" aria-label="View Source Repository">
-                                    &rarr;
+                                    <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h7.5M6.5 2.5L10 6l-3.5 3.5"/></svg>
                                 </a>
                             ` : ''}
                             ${item.live ? `
                                 <a href="${item.live}" class="card-quick-link" target="_blank" rel="noopener noreferrer" title="${item.liveLabel || 'Launch Live Production System'}" aria-label="${item.liveLabel || 'Launch Live Production System'}">
-                                    &nearr;
+                                    <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8"/></svg>
                                 </a>
                             ` : ''}
                         </div>
@@ -660,7 +660,7 @@ if (chartImg) {
                     <div class="back-top-meta">
                         <span class="back-archive-title letterpress">SPECIMEN // ${formattedIndex} &bull; DOSSIER</span>
                         <button type="button" class="back-btn-flip-return" data-action="flip-return" aria-label="Return to card front face">
-                            &circlearrowleft; FRONT
+                            <svg viewBox="0 0 12 12" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 3px; vertical-align: -1px;"><path d="M10.5 6a4.5 4.5 0 0 1-7.68 3.18L1.5 8"/><path d="M1.5 10.5v-3h3"/></svg>FRONT
                         </button>
                     </div>
 
@@ -682,12 +682,12 @@ if (chartImg) {
                     <div class="back-links-row">
                         ${item.repo ? `
                             <a href="${item.repo}" class="back-action-cta primary-cta" target="_blank" rel="noopener noreferrer">
-                                Access Repository &rarr;
+                                Access Repository <svg class="editorial-arrow-icon" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h7.5M6.5 2.5L10 6l-3.5 3.5"/></svg>
                             </a>
                         ` : ''}
                         ${item.live ? `
                             <a href="${item.live}" class="back-action-cta secondary-cta" target="_blank" rel="noopener noreferrer">
-                                ${item.liveLabel || 'Launch System'} &nearr;
+                                ${item.liveLabel || 'Launch System'} <svg class="editorial-arrow-icon" viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8"/></svg>
                             </a>
                         ` : ''}
                     </div>
