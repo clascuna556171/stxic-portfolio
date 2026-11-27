@@ -135,6 +135,22 @@ const projects = {
         repo: "https://github.com/clascuna556171/stxic-atlas",
         live: "https://stxic-atlas.vercel.app/",
         liveLabel: "Explore Demo"
+    },
+    halo: {
+        title: "STXIC Halo",
+        badge: "MICROSOFT STORE • v0.1.1",
+        monogram: "SH",
+        subtitle: "Local-First Windows HUD for AI Coding Agents",
+        summary: "Floating top-edge Windows HUD tracking 5 AI coding agents, quota rings, proof-of-work checks, and CPU/RAM locally with zero cloud telemetry.",
+        tokens: ["TAURI 2", "RUST", "REACT", "TYPESCRIPT", "WINDOWS"],
+        problem: "Running multiple AI coding agents across terminals and IDEs forces constant window switching to check which agent is waiting for approval, nearing a quota limit, finished, or stuck—while cloud trackers risk exposing prompts and workspace history.",
+        solution: "Built a local-first Windows 10/11 top-edge floating HUD in Tauri 2, Rust, and React with Apple Liquid Glass styling and an auto-hide peek bar. Connects Claude Code, Antigravity, Codex, GitHub Copilot CLI, and OpenCode via opt-in local hooks, CLI status lines, and session logs, adding in-HUD Claude permission approvals, Git/test Proof-of-Work verification, workspace collision alerts, and sysinfo hardware telemetry.",
+        performance: "6.92 MB settled idle RAM • 0% idle CPU • avg 7.7ms IPC latency • 52 Rust & 110 Vitest passing tests • Zero outbound network requests.",
+        stack: "TAURI 2 / RUST / REACT / TYPESCRIPT / SYSINFO / POWERSHELL / WEBVIEW2 / MSIX",
+        img: "images/stxic_halo_mockup.jpg",
+        repo: "https://github.com/clascuna556171/stxic-halo",
+        live: "https://apps.microsoft.com/detail/9NSGFN7JZWPH",
+        liveLabel: "Get on Microsoft Store"
     }
 };
 
